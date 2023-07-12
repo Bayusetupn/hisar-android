@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">HisarApp</string>
     <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="pass">Password</string>
     <string name="login_desc">Masukkan Username dan Password Anda Untuk Login</string>
 </resources>

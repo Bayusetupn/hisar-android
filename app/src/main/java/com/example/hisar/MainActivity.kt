@@ -2,6 +2,7 @@ package com.example.hisar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.hisar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,5 +13,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        binding.loginBtn.setOnClickListener {
+            binding.error.text = "error showing"
+            binding.error.visibility = View.VISIBLE
+        }
+
     }
+
+
+
 }
