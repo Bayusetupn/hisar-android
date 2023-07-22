@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -23,11 +24,13 @@
             android:fontFamily="@font/dmsans_bold"
             android:text="@string/login"
             android:textSize="25sp"
+            android:textColor="@color/navy800"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textColor="@color/navy800"
             android:id="@+id/login_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,55 +55,44 @@
             app:layout_constraintTop_toBottomOf="@+id/login_desc" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:id="@+id/username"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:inputType="text"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="13dp"
+            android:layout_height="wrap_content"
             android:hint="@string/username"
-            app:layout_constraintTop_toBottomOf="@+id/login_desc"
-            app:startIconDrawable="@drawable/baseline_account_box_24">
+            android:textColor="@color/navy800"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="17dp"
+            android:fontFamily="@font/dmsans_reg"
+            android:background="@drawable/text_input"
+            />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:minHeight="48dp"
-                android:textSize="17sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:id="@+id/password"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:textColor="@color/navy800"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="13dp"
+            android:layout_height="wrap_content"
             android:hint="@string/pass"
-            app:layout_constraintTop_toBottomOf="@+id/username"
-            app:startIconDrawable="@drawable/baseline_lock_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textSize="17sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:fontFamily="@font/dmsans_reg"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="17dp"
+            android:background="@drawable/text_input"
+            />
 
         <Button
             android:id="@+id/login_btn"
             android:background="@drawable/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
-            android:backgroundTint="@color/black"
             android:fontFamily="@font/dmsans_bold"
             android:textSize="17sp"
-            android:paddingVertical="14dp"
+            android:paddingVertical="10dp"
             android:text="@string/login"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/password" />
+            android:textColor="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

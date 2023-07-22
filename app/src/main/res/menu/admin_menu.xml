@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/agen"
+        android:title="@string/daftarA"
+        android:icon="@drawable/user_placeholder"
+        />
+
+    <item
+        android:id="@+id/dash"
+        android:title="@string/dash"
+        android:icon="@drawable/home"
+        />
+
+    <item
+        android:id="@+id/ustad"
+        android:title="@string/daftarU"
+        android:icon="@drawable/user_placeholder"
+        />
+</menu>

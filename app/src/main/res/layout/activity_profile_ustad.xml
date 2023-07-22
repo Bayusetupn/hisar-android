@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.ProfileAdminActivity"
+    android:padding="@dimen/_20sdp"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:fontFamily="@font/dmsans_med"
+        android:text="Kembali"
+        android:textColor="@color/navy800"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <LinearLayout
+
+            android:padding="@dimen/_25sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:src="@drawable/user"
+                    />
+                <LinearLayout
+
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+
+                    <TextView
+                        android:id="@+id/nama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Ustad"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/navy800"
+                        android:fontFamily="@font/dmsans_bold"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ustad"
+                            android:fontFamily="@font/dmsans_med"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    />
+
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/trash"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/dmsans_bold"
+                    android:textSize="@dimen/_11ssp"
+                    android:textColor="@color/navy800"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jl.Nama Jalan No.2 Rt 04/Rw 01 Lamongan Kecamatan Lamongan, Surabaya, Jawa Timur"
+                    android:fontFamily="@font/dmsans_reg"
+                    android:textColor="@color/navy700"
+                    />
+
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:columnCount="2"
+                android:rowCount="1"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:fontFamily="@font/dmsans_bold"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="@color/navy800"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="admin"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:textColor="@color/navy700"
+                        />
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="@color/navy800"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Telepon"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="085156203867"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:textColor="@color/navy700"
+                        />
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="@color/navy800"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Jamaah"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="085156203867"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:textColor="@color/navy700"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="start"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:fontFamily="@font/dmsans_bold"
+                        android:textSize="@dimen/_11ssp"
+                        android:textColor="@color/navy800"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bergabung pada"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2023-05-02"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:textColor="@color/navy700"
+                        />
+                </LinearLayout>
+            </GridLayout>
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

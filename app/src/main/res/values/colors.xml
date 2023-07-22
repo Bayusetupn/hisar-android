@@ -2,6 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="accent">#422AFB</color>
     <color name="error">#FF3333</color>
+    <color name="bg">#F4F7FE</color>
+    <color name="navy700">#1B254B</color>
+    <color name="navy800">#111C44</color>
 
 </resources>

@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.HisarApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.HisarApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/black</item> -->
+        <item name="colorPrimary">@color/accent</item> -->
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="colorOnPrimary">@color/accent</item>
+        <item name="colorSurface" >@color/white</item>
+
     </style>
 
     <style name="Theme.HisarApp" parent="Base.Theme.HisarApp" />
+
 </resources>

@@ -1,8 +1,9 @@
 package com.example.hisar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import com.example.hisar.admin.AdminActivity
 import com.example.hisar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,14 +15,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.loginBtn.setOnClickListener {
-            binding.error.text = "error showing"
-            binding.error.visibility = View.VISIBLE
-        }
-
     }
 
+    override fun onStart() {
+        super.onStart()
 
+        binding.loginBtn.setOnClickListener{
+            startActivity(Intent(this,AdminActivity::class.java))
+        }
+    }
 
 }
