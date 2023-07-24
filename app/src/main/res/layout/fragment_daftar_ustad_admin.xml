@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".admin.DaftarAgenAdmin"
     android:padding="@dimen/_20sdp"
+    android:clipToPadding="false"
+    android:clipChildren="false"
     android:background="@color/bg"
     >
 
@@ -51,6 +53,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <EditText
+        android:id="@+id/search"
         android:layout_marginTop="@dimen/_20sdp"
         android:drawableStart="@drawable/search"
         android:layout_width="match_parent"
@@ -64,5 +67,29 @@
         android:background="@drawable/text_input"
         app:layout_constraintTop_toBottomOf="@+id/view2"
         tools:layout_editor_absoluteX="26dp" />
+
+    <ProgressBar
+        android:id="@+id/load"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/navy800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/daftar"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:itemCount="2"
+        tools:layout_editor_absoluteX="26dp"
+        tools:listitem="@layout/list_daftar_agen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

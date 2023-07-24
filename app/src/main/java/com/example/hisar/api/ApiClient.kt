@@ -13,7 +13,7 @@ object ApiClient {
             .addInterceptor(logging)
 
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://38d3-103-93-93-190.ngrok-free.app/")
+            .baseUrl("https://api-0ych.onrender.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okhttp.build())
             .build()

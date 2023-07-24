@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.loginBtn.setOnClickListener{
+            binding.text.visibility = View.GONE
+            binding.load.visibility = View.VISIBLE
             val data = LoginRequest(binding.username.text.toString(),binding.password.text.toString())
             ApiClient.apiService.login(data)
                 .enqueue(object: Callback<LoginResponse>{
@@ -52,12 +54,16 @@ class MainActivity : AppCompatActivity() {
                             val res = Gson().fromJson(response.errorBody()?.string(),LoginResponse::class.java)
                             binding.error.visibility = View.VISIBLE
                             binding.error.text = "${res.to}"
+                            binding.text.visibility = View.VISIBLE
+                            binding.load.visibility = View.GONE
                         }
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         binding.error.visibility = View.VISIBLE
                         binding.error.text = "Server Error !"
+                        binding.text.visibility = View.VISIBLE
+                        binding.load.visibility = View.GONE
                     }
 
                 })

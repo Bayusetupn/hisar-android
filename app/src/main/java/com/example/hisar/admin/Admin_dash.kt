@@ -1,10 +1,14 @@
 package com.example.hisar.admin
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.hisar.DaftarAgenAdapter
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Data
 import com.example.hisar.data.Jamaah
@@ -17,6 +21,8 @@ class Admin_dash : Fragment() {
 
     private var _binding: FragmentAdminDashBinding? = null
     private val binding get() = _binding!!
+    private lateinit var agen:RecyclerView
+    private lateinit var ustad:RecyclerView
 
     private fun DataAgen(){
         arguments?.getString("auth_key")?.let {
@@ -25,7 +31,11 @@ class Admin_dash : Fragment() {
                     override fun onResponse(call: Call<Data>, response: Response<Data>) {
                         if (response.isSuccessful){
                             val res = response.body()!!
-                            binding.totalAgen.text = res.data?.size.toString()
+                            agen.adapter = DaftarAgenAdapter(res.data,2)
+                            Log.d("data",res.data.toString())
+                            binding.totalAgen.text = res.data.size.toString()
+                            binding.load.visibility = View.GONE
+                            binding.daftar.visibility = View.VISIBLE
                         }
                     }
 
@@ -44,7 +54,10 @@ class Admin_dash : Fragment() {
                     override fun onResponse(call: Call<Data>, response: Response<Data>) {
                         if (response.isSuccessful){
                             val res= response.body()!!
-                            binding.totalUstad.text = res.data?.size.toString()
+                            ustad.adapter = DaftarAgenAdapter(res.data,2)
+                            binding.totalUstad.text = res.data.size.toString()
+                            binding.load.visibility = View.GONE
+                            binding.daftar.visibility = View.VISIBLE
                         }
                     }
 
@@ -65,6 +78,9 @@ class Admin_dash : Fragment() {
                         if (response.isSuccessful){
                             val res= response.body()!!
                             binding.totalJamaah.text = res.data?.size.toString()
+                            binding.load.visibility = View.GONE
+                            binding.daftar.visibility = View.VISIBLE
+
                         }
                     }
 
@@ -98,9 +114,30 @@ class Admin_dash : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        agen = binding.daftarAgen
+        ustad = binding.daftarUstad
+        agen.layoutManager = object : LinearLayoutManager(context){
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+
+            override fun canScrollHorizontally(): Boolean {
+                return false
+            }
+        }
+        ustad.layoutManager = object : LinearLayoutManager(context){
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+
+            override fun canScrollHorizontally(): Boolean {
+                return false
+            }
+        }
         DataAgen()
         DataUstad()
         DataJamaah()
+
     }
 
 

@@ -7,6 +7,8 @@
     tools:context=".admin.DaftarAgenAdmin"
     android:padding="@dimen/_20sdp"
     android:background="@color/bg"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     >
 
     <TextView
@@ -51,18 +53,42 @@
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <EditText
-        android:layout_marginTop="@dimen/_20sdp"
-        android:drawableStart="@drawable/search"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dmsans_med"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/text_input"
+        android:drawableStart="@drawable/search"
         android:drawablePadding="@dimen/_5sdp"
+        android:fontFamily="@font/dmsans_med"
         android:hint="Cari"
-        android:textSize="@dimen/_14ssp"
         android:paddingHorizontal="@dimen/_10sdp"
         android:paddingVertical="@dimen/_12sdp"
-        android:background="@drawable/text_input"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintTop_toBottomOf="@+id/view2"
         tools:layout_editor_absoluteX="26dp" />
+
+    <ProgressBar
+        android:id="@+id/load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/navy800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/daftar"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        tools:itemCount="2"
+        tools:layout_editor_absoluteX="26dp"
+        tools:listitem="@layout/list_daftar_agen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

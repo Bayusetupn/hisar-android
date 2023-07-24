@@ -34,13 +34,13 @@ class AdminActivity : AppCompatActivity() {
                     binding.adminNav.menu.findItem(R.id.ustad).isEnabled = true
                 }
                 R.id.agen->{
-                    frag(DaftarAgenAdmin())
+                    frag(DaftarAgenAdmin.setData(to))
                     binding.adminNav.menu.findItem(R.id.dash).isEnabled = true
                     binding.adminNav.menu.findItem(R.id.agen).isEnabled = false
                     binding.adminNav.menu.findItem(R.id.ustad).isEnabled = true
                 }
                 R.id.ustad->{
-                    frag((DaftarUstadAdmin()))
+                    frag((DaftarUstadAdmin.setData(to)))
                     binding.adminNav.menu.findItem(R.id.dash).isEnabled = true
                     binding.adminNav.menu.findItem(R.id.agen).isEnabled = true
                     binding.adminNav.menu.findItem(R.id.ustad).isEnabled = false
