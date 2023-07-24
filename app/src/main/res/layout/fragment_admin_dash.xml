@@ -94,9 +94,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dmsans_med"
-                        android:text="200"
+                        tools:text="200"
                         android:textColor="@color/navy700"
-                        android:textSize="@dimen/_10ssp" />
+                        android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
 
@@ -153,8 +153,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dmsans_med"
-                        android:text="200"
-                        android:textSize="@dimen/_10ssp" />
+                        tools:text="200"
+                        android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
 
@@ -214,9 +214,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/dmsans_med"
-                    android:text="200"
+                    tools:text="200"
                     android:textColor="@color/navy700"
-                    android:textSize="@dimen/_10ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 
