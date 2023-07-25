@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".admin.DaftarAgenAdmin"
     android:padding="@dimen/_20sdp"
-    android:clipToPadding="false"
-    android:clipChildren="false"
     android:background="@color/bg"
     >
 

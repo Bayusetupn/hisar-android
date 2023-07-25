@@ -7,8 +7,6 @@
     tools:context=".admin.DaftarAgenAdmin"
     android:padding="@dimen/_20sdp"
     android:background="@color/bg"
-    android:clipChildren="false"
-    android:clipToPadding="false"
     >
 
     <TextView

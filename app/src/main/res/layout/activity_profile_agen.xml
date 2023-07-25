@@ -155,12 +155,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dmsans_bold"
-                        android:text="Username"
+                        android:text="No Ktp"
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_13ssp" />
 
                     <TextView
-                        android:id="@+id/username"
+                        android:id="@+id/ktp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dmsans_reg"
@@ -230,6 +230,24 @@
                         android:text="2023-05-02"
                         android:textColor="@color/navy700"
                         android:textSize="@dimen/_11ssp" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="Username"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:textColor="@color/navy700"
+                        android:textSize="@dimen/_11ssp"
+                        tools:text="admin" />
                 </LinearLayout>
             </GridLayout>
 

@@ -36,6 +36,7 @@ class DaftarAgenAdapter(private var data: ArrayList<Data.DataAgen>, private val 
                 .putExtra("foto",item.foto)
                 .putExtra("id",item.id)
                 .putExtra("role",item.role)
+                .putExtra("ktp",item.noKtp)
             holder.itemView.context.startActivity(intent)
         }
     }

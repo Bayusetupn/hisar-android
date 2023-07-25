@@ -24,7 +24,7 @@
             android:name=".admin.DaftarJamaah"
             android:exported="false" />
         <activity
-            android:name=".admin.ProfileUstad"
+            android:name=".admin.ProfileJamaah"
             android:exported="false" />
         <activity
             android:name=".admin.ProfileAgen"

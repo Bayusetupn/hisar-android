@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_20sdp"
-    android:clipChildren="false"
-    android:clipToPadding="false"
     tools:context=".admin.Admin_dash"
     android:background="@color/bg"
     >
@@ -66,7 +64,7 @@
             android:id="@+id/gridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:columnCount="3"
             android:rowCount="1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +72,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
+                app:cardUseCompatPadding="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -127,15 +126,12 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Space
-                android:layout_width="@dimen/_5sdp"
-                android:layout_columnWeight="1" />
-
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:elevation="@dimen/_10sdp"
+                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="@dimen/_7sdp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -189,10 +185,10 @@
 
 
         <androidx.cardview.widget.CardView
+            app:cardUseCompatPadding="true"
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             app:cardCornerRadius="@dimen/_7sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -249,7 +245,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:clipChildren="false"
 
             android:orientation="vertical"
@@ -283,7 +279,6 @@
                 android:id="@+id/daftarAgen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 tools:itemCount="2"
@@ -315,7 +310,6 @@
                 android:id="@+id/daftarUstad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 tools:itemCount="2"

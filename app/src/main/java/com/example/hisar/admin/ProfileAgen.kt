@@ -83,6 +83,7 @@ class ProfileAgen : AppCompatActivity() {
         binding.bergabung.text = intent.getStringExtra("bergabung")
         binding.username.text = intent.getStringExtra("username")
         binding.totalJamaah.text = intent.getStringExtra("totalJ")
+        binding.ktp.text = intent.getStringExtra("ktp")
 
         val idAgen = intent.getStringExtra("id")
 

@@ -1,9 +1,11 @@
 package com.example.hisar.login
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.hisar.admin.ProfileJamaah
 import com.example.hisar.data.Data
 import com.example.hisar.data.Jamaah
 import com.example.hisar.databinding.ListDaftarAgenBinding
@@ -26,6 +28,20 @@ RecyclerView.Adapter<DaftarJamaahAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: DaftarJamaahAdapter.ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        holder.open.setOnClickListener {
+            val intent = Intent(holder.itemView.context,ProfileJamaah::class.java)
+                .putExtra("nama",item.nama)
+                .putExtra("alamat",item.alamat)
+                .putExtra("ktp",item.ktp)
+                .putExtra("kelamin",item.jenisKelamin)
+                .putExtra("telp",item.noTelepon)
+                .putExtra("bergabung",item.dibuatPada)
+                .putExtra("berangkat",item.berangkat)
+                .putExtra("keterangan",item.dp)
+                .putExtra("paket",item.paket)
+                .putExtra("didaftarkan",item.daftarkan)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +61,7 @@ RecyclerView.Adapter<DaftarJamaahAdapter.ViewHolder>(){
             binding.nama.text = item.nama
             binding.telp.text = item.noTelepon
         }
+        val open = binding.open
     }
 
 }
