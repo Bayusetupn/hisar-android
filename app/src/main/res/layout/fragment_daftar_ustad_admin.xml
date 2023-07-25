@@ -79,6 +79,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search" />
 
+    <TextView
+        android:id="@+id/not_found"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Ustad Tidak Ditemukan"
+        android:fontFamily="@font/dmsans_med"
+        android:textColor="@color/navy800"
+        android:textSize="@dimen/_13ssp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:visibility="gone"
         android:id="@+id/daftar"

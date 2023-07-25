@@ -1,5 +1,6 @@
 package com.example.hisar.admin
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hisar.DaftarAgenAdapter
+import com.example.hisar.R
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Data
 import com.example.hisar.data.Jamaah
 import com.example.hisar.databinding.FragmentAdminDashBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarMenu
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -133,6 +137,23 @@ class Admin_dash : Fragment() {
             override fun canScrollHorizontally(): Boolean {
                 return false
             }
+        }
+
+        binding.moreAgen.setOnClickListener {
+            requireActivity().findViewById<BottomNavigationView>(R.id.admin_nav).selectedItemId = R.id.agen
+        }
+
+        binding.moteUstad.setOnClickListener {
+            requireActivity().findViewById<BottomNavigationView>(R.id.admin_nav).selectedItemId = R.id.ustad
+        }
+
+        binding.profile.setOnClickListener{
+            val intent = Intent(context,ProfileAdminActivity::class.java)
+            intent.putExtra("key",arguments?.getString("auth_key"))
+            intent.putExtra("totalUstad",binding.totalUstad.text)
+            intent.putExtra("totalAgen",binding.totalAgen.text)
+            intent.putExtra("totalJamaah",binding.totalJamaah.text)
+            startActivity(intent)
         }
         DataAgen()
         DataUstad()

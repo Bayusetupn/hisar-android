@@ -2,6 +2,8 @@ package com.example.hisar.admin
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +17,15 @@ import com.example.hisar.databinding.FragmentDaftarUstadAdminBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Locale
 
 class DaftarUstadAdmin : Fragment() {
 
     private var _binding: FragmentDaftarUstadAdminBinding? = null
     private val binding get() = _binding!!
     private lateinit var daftar:RecyclerView
+    private lateinit var adapter: DaftarAgenAdapter
+    private lateinit var list: ArrayList<Data.DataAgen>
 
     companion object {
         fun setData(data:String?): DaftarUstadAdmin{
@@ -39,9 +44,11 @@ class DaftarUstadAdmin : Fragment() {
                     override fun onResponse(call: Call<Data>, response: Response<Data>) {
                         if (response.isSuccessful){
                             val res = response.body()!!
-                            daftar.adapter = DaftarAgenAdapter(res.data,res.data.size)
                             binding.load.visibility = View.GONE
                             binding.daftar.visibility = View.VISIBLE
+                            adapter = DaftarAgenAdapter(res.data,res.data.size)
+                            list = res.data
+                            daftar.adapter = adapter
                         }
                     }
 
@@ -64,6 +71,38 @@ class DaftarUstadAdmin : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(query: Editable?) {
+                if (query != null){
+                    val filtered = ArrayList<Data.DataAgen>()
+                    for (i in list ){
+                        if (i.nama?.lowercase(Locale.ROOT)?.contains(query) == true){
+                            filtered.add(i)
+                        }else if(i.noTelepon?.contains(query)==true){
+                            filtered.add(i)
+                        }
+                    }
+                    if (filtered.isNotEmpty()){
+                        binding.notFound.visibility = View.GONE
+                        adapter.filteredList(filtered)
+                        binding.daftar.visibility = View.VISIBLE
+                    }else{
+                        binding.notFound.visibility = View.VISIBLE
+                        binding.daftar.visibility = View.INVISIBLE
+                    }
+                }
+            }
+
+        })
 
         daftar = binding.daftar
 

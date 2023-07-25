@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class Data(
 
 	@field:SerializedName("data")
-	val data: List<DataAgen>
+	val data: ArrayList<DataAgen>
 
 ): Parcelable {
 	@Parcelize

@@ -28,4 +28,12 @@ interface ApiServices {
     @GET("jamaah")
     fun jamaah(@Header("x-auth-token") key: String): Call<Jamaah>
 
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @GET("profile")
+    fun profile(@Header("x-auth-token") key: String?): Call<Data>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @POST("agen/jamaah")
+    fun jamaah(@Header("x-auth-token") key: String?,@Body id:String): Call<Jamaah>
+
 }

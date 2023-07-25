@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class Jamaah(
 
 	@field:SerializedName("data")
-	val data: List<DataItem?>? = null
+	val data: ArrayList<DataItem>
 ): Parcelable {
 	@Parcelize
 	data class DataItem(
