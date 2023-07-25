@@ -5,6 +5,13 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
+data class RequestId(
+	@field:SerializedName("id")
+	val id:String?
+
+	) : Parcelable
+
+@Parcelize
 data class Jamaah(
 
 	@field:SerializedName("data")

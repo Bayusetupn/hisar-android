@@ -2,6 +2,7 @@ package com.example.hisar.api
 
 import com.example.hisar.data.Data
 import com.example.hisar.data.Jamaah
+import com.example.hisar.data.RequestId
 import com.example.hisar.login.LoginRequest
 import com.example.hisar.login.LoginResponse
 import retrofit2.Call
@@ -34,6 +35,6 @@ interface ApiServices {
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("agen/jamaah")
-    fun jamaah(@Header("x-auth-token") key: String?,@Body id:String): Call<Jamaah>
+    fun jamaah(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<Jamaah>
 
 }

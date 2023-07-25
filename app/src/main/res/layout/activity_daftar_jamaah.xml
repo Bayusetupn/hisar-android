@@ -32,6 +32,7 @@
 
 
     <EditText
+        android:id="@+id/search"
         android:layout_marginTop="@dimen/_20sdp"
         android:drawableStart="@drawable/search"
         android:layout_width="match_parent"
@@ -45,5 +46,44 @@
         android:background="@drawable/text_input"
         app:layout_constraintTop_toBottomOf="@+id/view2"
         tools:layout_editor_absoluteX="26dp" />
+
+    <ProgressBar
+        android:id="@+id/load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/navy800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/not_found"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Jamaah Tidak Ditemukan"
+        android:fontFamily="@font/dmsans_med"
+        android:textColor="@color/navy800"
+        android:textSize="@dimen/_13ssp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/daftar"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:itemCount="2"
+        tools:layout_editor_absoluteX="26dp"
+        tools:listitem="@layout/list_daftar_agen" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

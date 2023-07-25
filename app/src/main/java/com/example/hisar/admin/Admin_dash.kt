@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,7 +37,6 @@ class Admin_dash : Fragment() {
                         if (response.isSuccessful){
                             val res = response.body()!!
                             agen.adapter = DaftarAgenAdapter(res.data,2)
-                            Log.d("data",res.data.toString())
                             binding.totalAgen.text = res.data.size.toString()
                             binding.load.visibility = View.GONE
                             binding.daftar.visibility = View.VISIBLE
@@ -44,7 +44,7 @@ class Admin_dash : Fragment() {
                     }
 
                     override fun onFailure(call: Call<Data>, t: Throwable) {
-
+                        Toast.makeText(context,"Server Error!", Toast.LENGTH_SHORT).show()
                     }
 
                 })
