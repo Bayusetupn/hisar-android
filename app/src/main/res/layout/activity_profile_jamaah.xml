@@ -105,18 +105,6 @@
 
                         </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/edit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_15sdp"
-                            android:src="@drawable/edit" />
-
-                        <ImageView
-                            android:id="@+id/delete"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/trash" />
 
                     </LinearLayout>
 
@@ -336,12 +324,10 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_15ssp" />
 
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp">
 
                         <RadioButton
+                            android:id="@+id/koper"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -350,6 +336,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/batik"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -358,6 +346,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/ihram"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -366,6 +356,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/mukena"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -374,6 +366,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/syal"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -382,6 +376,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/panduan"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -390,6 +386,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/doa"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -398,6 +396,8 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/sholawat"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -406,14 +406,14 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:id="@+id/peta"
+                            android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
                             android:text="Booklet Peta Jannatul Baqi"
                             android:textColor="@color/navy800"
                             android:textSize="@dimen/_12ssp" />
-
-                    </RadioGroup>
 
                 </LinearLayout>
 

@@ -30,6 +30,7 @@ RecyclerView.Adapter<DaftarJamaahAdapter.ViewHolder>(){
         holder.bind(item)
         holder.open.setOnClickListener {
             val intent = Intent(holder.itemView.context,ProfileJamaah::class.java)
+                .putExtra("id",item.id)
                 .putExtra("nama",item.nama)
                 .putExtra("alamat",item.alamat)
                 .putExtra("ktp",item.ktp)
