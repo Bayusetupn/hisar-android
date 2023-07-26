@@ -3,6 +3,7 @@ package com.example.hisar.admin
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.hisar.R
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Perkab
@@ -24,22 +25,24 @@ class ProfileJamaah : AppCompatActivity() {
                     call: Call<PerkabJamaah>,
                     response: Response<PerkabJamaah>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         val res = response.body()!!
-                        binding.koper.isChecked = res.data.koperDll == true
-                        binding.ihram.isChecked = res.data.kainIhram == true
-                        binding.batik.isChecked = res.data.kainBatik == true
-                        binding.mukena.isChecked = res.data.mukena == true
-                        binding.mukena.isChecked = res.data.mukena == true
-                        binding.panduan.isChecked = res.data.bukuPanduan == true
-                        binding.doa.isChecked = res.data.bukuDoa == true
-                        binding.sholawat.isChecked = res.data.bookletSholawat == true
-                        binding.peta.isChecked = res.data.bookletPeta == true
+                        val cek = res.data
+                        binding.koper.isChecked = cek.koperDll
+                        binding.batik.isChecked = cek.kainBatik
+                        binding.ihram.isChecked = cek.kainIhram
+                        binding.mukena.isChecked = cek.mukena
+                        binding.syal.isChecked = cek.syal
+                        binding.panduan.isChecked = cek.bukuPanduan
+                        binding.doa.isChecked = cek.bukuDoa
+                        binding.sholawat.isChecked = cek.bookletSholawat
+                        binding.peta.isChecked = cek.bookletPeta
+
                     }
                 }
 
                 override fun onFailure(call: Call<PerkabJamaah>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(applicationContext,"${t.message}",Toast.LENGTH_SHORT).show()
                 }
 
             })

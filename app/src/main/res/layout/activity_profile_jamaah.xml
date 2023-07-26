@@ -326,8 +326,11 @@
 
 
                         <RadioButton
+                            android:paddingLeft="@dimen/_5sdp"
                             android:id="@+id/koper"
                             android:enabled="false"
+                            android:buttonTint="@color/accent"
+                            android:button="@drawable/radio_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -336,16 +339,22 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
                             android:id="@+id/batik"
                             android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
                             android:text="Kain Batik"
+                            android:button="@drawable/radio_button"
                             android:textColor="@color/navy800"
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:button="@drawable/radio_button"
                             android:id="@+id/ihram"
                             android:enabled="false"
                             android:layout_width="wrap_content"
@@ -356,7 +365,10 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
                             android:id="@+id/mukena"
+                            android:button="@drawable/radio_button"
                             android:enabled="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -366,8 +378,11 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
                             android:id="@+id/syal"
                             android:enabled="false"
+                            android:button="@drawable/radio_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/dmsans_med"
@@ -376,6 +391,9 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:button="@drawable/radio_button"
                             android:id="@+id/panduan"
                             android:enabled="false"
                             android:layout_width="wrap_content"
@@ -386,6 +404,9 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:button="@drawable/radio_button"
                             android:id="@+id/doa"
                             android:enabled="false"
                             android:layout_width="wrap_content"
@@ -396,6 +417,9 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:button="@drawable/radio_button"
                             android:id="@+id/sholawat"
                             android:enabled="false"
                             android:layout_width="wrap_content"
@@ -406,6 +430,9 @@
                             android:textSize="@dimen/_12ssp" />
 
                         <RadioButton
+                            android:buttonTint="@color/accent"
+                            android:paddingLeft="@dimen/_5sdp"
+                            android:button="@drawable/radio_button"
                             android:id="@+id/peta"
                             android:enabled="false"
                             android:layout_width="wrap_content"
