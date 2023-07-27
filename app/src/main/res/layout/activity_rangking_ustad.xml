@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.Rangking_AgenActivity"
+    tools:context=".admin.RangkingUstad"
     android:padding="@dimen/_20sdp"
     android:background="@color/bg"
     >
@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/dmsans_bold"
-        android:text="Rangking Agen"
+        android:text="Rangking Ustad"
         android:textSize="@dimen/_20ssp"
         android:textColor="@color/navy800"
         app:layout_constraintStart_toStartOf="parent"

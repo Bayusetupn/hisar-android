@@ -10,18 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hisar.DaftarRank
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Data
-import com.example.hisar.databinding.ActivityRangkingAgenBinding
+import com.example.hisar.databinding.ActivityRangkingUstadBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Rangking_AgenActivity : AppCompatActivity() {
+class RangkingUstad : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRangkingAgenBinding
+    private lateinit var binding: ActivityRangkingUstadBinding
     private lateinit var rank:RecyclerView
 
     private fun getRankAgen(key:String){
-        ApiClient.apiService.agen(key)
+        ApiClient.apiService.ustad(key)
             .enqueue(object: Callback<Data>{
                 override fun onResponse(call: Call<Data>, response: Response<Data>) {
                     if (response.isSuccessful){
@@ -30,6 +30,7 @@ class Rangking_AgenActivity : AppCompatActivity() {
                         rank.adapter = DaftarRank(sort,res.data.size)
                         binding.load.visibility = View.GONE
                         binding.daftarRank.visibility = View.VISIBLE
+
                     }
                 }
 
@@ -42,7 +43,7 @@ class Rangking_AgenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRangkingAgenBinding.inflate(layoutInflater)
+        binding = ActivityRangkingUstadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val shared = getSharedPreferences("AUTH",Context.MODE_PRIVATE)

@@ -2,9 +2,12 @@ package com.example.hisar.api
 
 import com.example.hisar.data.Data
 import com.example.hisar.data.Jamaah
-import com.example.hisar.data.Perkab
+import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
+import com.example.hisar.data.RequestEditAdmin
 import com.example.hisar.data.RequestId
+import com.example.hisar.data.RequestPassword
+import com.example.hisar.data.RiwayatLogin
 import com.example.hisar.login.LoginRequest
 import com.example.hisar.login.LoginResponse
 import retrofit2.Call
@@ -13,6 +16,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface ApiServices {
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
@@ -42,5 +46,17 @@ interface ApiServices {
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("jamaah/perkab")
     fun perkab(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<PerkabJamaah>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @POST("riwayat")
+    fun riwayatLogin(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<RiwayatLogin>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("admin/edit")
+    fun editAdmin(@Header("x-auth-token") key: String?,@Body req: RequestEditAdmin ): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("admin/edit/pass")
+    fun editPassAdmin(@Header("x-auth-token") key: String?,@Body req: RequestPassword ): Call<Message>
 
 }

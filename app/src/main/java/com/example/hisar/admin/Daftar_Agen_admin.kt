@@ -4,12 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hisar.DaftarAgenAdapter
@@ -108,6 +107,9 @@ class DaftarAgenAdmin : Fragment() {
 
         daftar.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
 
+        binding.rank.setOnClickListener {
+            startActivity(Intent(context,Rangking_AgenActivity::class.java))
+        }
         binding.add.setOnClickListener{
             startActivity(Intent(context,TambahAgenAcitvity::class.java))
         }

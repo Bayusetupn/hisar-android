@@ -2,29 +2,38 @@ package com.example.hisar
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hisar.admin.ProfileAgen
 import com.example.hisar.data.Data
-import com.example.hisar.databinding.ListDaftarAgenBinding
+import com.example.hisar.databinding.ListRangkingBinding
 
-class DaftarAgenAdapter(private var data: ArrayList<Data.DataAgen>, private val length:Int):RecyclerView.Adapter<DaftarAgenAdapter.ViewHolder>() {
+class DaftarRank(private var data: ArrayList<Data.DataAgen>, private val length:Int):RecyclerView.Adapter<DaftarRank.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DaftarAgenAdapter.ViewHolder {
-        val binding = ListDaftarAgenBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+    ): DaftarRank.ViewHolder {
+        val binding = ListRangkingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)
     }
 
-    fun filteredList(data: ArrayList<Data.DataAgen>){
-        this.data = data
+    fun sortData(newData: ArrayList<Data.DataAgen>) {
+        data.clear()
+        data.addAll(newData)
         notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: DaftarAgenAdapter.ViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: DaftarRank.ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        when(position){
+            0 -> holder.diamond.visibility = View.VISIBLE
+            1 -> holder.platinum.visibility = View.VISIBLE
+            2 -> holder.gold.visibility = View.VISIBLE
+        }
+        holder.rank.text = "${position + 1}"
         holder.open.setOnClickListener {
             val intent = Intent(holder.itemView.context,ProfileAgen::class.java)
                 .putExtra("nama",item.nama)
@@ -42,21 +51,18 @@ class DaftarAgenAdapter(private var data: ArrayList<Data.DataAgen>, private val 
     }
 
     override fun getItemCount(): Int {
-        if (data.size <= 1){
-            return 1
-        }else if(data.size == 2){
-            return 2
-        }else {
-            return length
-        }
+        return data.size
     }
 
-    inner class ViewHolder(private val binding: ListDaftarAgenBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: ListRangkingBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item:Data.DataAgen){
             binding.nama.text = item.nama
             binding.telp.text = item.noTelepon
         }
-
+        val diamond = binding.diamond
+        val platinum = binding.platinum
+        val gold = binding.gold
+        val rank = binding.rank
         val open = binding.open
     }
 

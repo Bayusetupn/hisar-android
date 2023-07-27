@@ -66,7 +66,7 @@ class Admin_dash : Fragment() {
                     }
 
                     override fun onFailure(call: Call<Data>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        Toast.makeText(context,"Server Error!",Toast.LENGTH_SHORT).show()
                     }
 
                 })

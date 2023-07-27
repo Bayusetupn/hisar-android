@@ -13,7 +13,7 @@ object ApiClient {
             .addInterceptor(logging)
 
         private val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://api-0ych.onrender.com/")
+            .baseUrl("https://sea-lion-app-2-poqi4.ondigitalocean.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okhttp.build())
             .build()

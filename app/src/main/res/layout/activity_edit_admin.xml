@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_20sdp"
+    android:clipToPadding="false"
+    android:background="@color/bg"
+    tools:context=".admin.EditAdmin"
+    >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:fontFamily="@font/dmsans_med"
+        android:text="Kembali"
+        android:textColor="@color/navy800"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                <ScrollView
+                    android:scrollbars="none"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:padding="@dimen/_17sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="start"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Edit Admin"
+                            android:fontFamily="@font/dmsans_bold"
+                            android:textColor="@color/navy800"
+                            android:textSize="@dimen/_18ssp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Masukkan Informasi Admin Untuk Edit Admin"
+                            android:fontFamily="@font/dmsans_reg"
+                            android:textColor="@color/navy800"
+                            android:textSize="@dimen/_12ssp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/error"
+                            android:fontFamily="@font/dmsans_med"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Username Sudah Dipakai!"
+                            android:textColor="@color/error"
+                            android:visibility="gone"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            />
+
+                        <TextView
+                            android:layout_marginVertical="@dimen/_8sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nama"
+                            android:fontFamily="@font/dmsans_med"
+                            android:textColor="@color/navy800"
+                            android:textSize="@dimen/_12ssp"
+
+                            />
+
+                        <EditText
+                            android:id="@+id/nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_med"
+                            android:hint="Nama Admin"
+                            android:textSize="@dimen/_12ssp"
+                            android:paddingHorizontal="@dimen/_15sdp"
+                            android:paddingVertical="@dimen/_12sdp"
+                            android:background="@drawable/text_input"
+                            app:layout_constraintTop_toBottomOf="@+id/view2"
+                            tools:layout_editor_absoluteX="26dp" />
+
+                        <TextView
+                            android:layout_marginVertical="@dimen/_8sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Username"
+                            android:fontFamily="@font/dmsans_med"
+                            android:textColor="@color/navy800"
+                            android:textSize="@dimen/_12ssp"
+
+                            />
+
+                        <EditText
+                            android:inputType="text"
+                            android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_med"
+                            android:hint="Username"
+                            android:textSize="@dimen/_12ssp"
+                            android:paddingHorizontal="@dimen/_15sdp"
+                            android:paddingVertical="@dimen/_12sdp"
+                            android:background="@drawable/text_input"
+                            app:layout_constraintTop_toBottomOf="@+id/view2"
+                            tools:layout_editor_absoluteX="26dp" />
+
+                        <Button
+                            android:id="@+id/edit"
+                            android:textAllCaps="false"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button"
+                            android:paddingVertical="@dimen/_10sdp"
+                            android:text="Edit"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/dmsans_bold"
+                            android:textColor="@color/white"
+                            />
+
+                    </LinearLayout>
+                </ScrollView>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/card1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:padding="@dimen/_17sdp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ganti Password"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_18ssp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Masukkan Password Ganti Password"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/error2"
+                        android:fontFamily="@font/dmsans_med"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Username Sudah Dipakai!"
+                        android:textColor="@color/error"
+                        android:visibility="gone"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:layout_marginVertical="@dimen/_8sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Password"
+                        android:fontFamily="@font/dmsans_med"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp"
+
+                        />
+
+                    <EditText
+                        android:inputType="textPassword"
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_med"
+                        android:hint="Password"
+                        android:textSize="@dimen/_12ssp"
+                        android:paddingHorizontal="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_12sdp"
+                        android:background="@drawable/text_input"
+                        app:layout_constraintTop_toBottomOf="@+id/view2"
+                        tools:layout_editor_absoluteX="26dp" />
+
+                    <TextView
+                        android:layout_marginVertical="@dimen/_8sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Konfirmasi Password"
+                        android:fontFamily="@font/dmsans_med"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp"
+
+                        />
+
+                    <EditText
+                        android:inputType="textPassword"
+                        android:id="@+id/konfir_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_med"
+                        android:hint="Ulangi Password"
+                        android:textSize="@dimen/_12ssp"
+                        android:paddingHorizontal="@dimen/_15sdp"
+                        android:paddingVertical="@dimen/_12sdp"
+                        android:background="@drawable/text_input"
+                        app:layout_constraintTop_toBottomOf="@+id/view2"
+                        tools:layout_editor_absoluteX="26dp" />
+
+                    <Button
+                        android:id="@+id/change_password"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:text="Ganti Password"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.hisar.admin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,13 @@ class ProfileAdminActivity : AppCompatActivity() {
         binding.totalAgen.text = agen
         binding.totalUstad.text = ustad
         binding.totalJamaah.text = jamaah
+
+        binding.edit.setOnClickListener {
+            val intent = Intent(applicationContext,EditAdmin::class.java)
+                .putExtra("nama",binding.nama.text)
+                .putExtra("username",binding.username.text)
+            startActivity(intent)
+        }
 
         binding.textView2.setOnClickListener{
             onBackPressed()

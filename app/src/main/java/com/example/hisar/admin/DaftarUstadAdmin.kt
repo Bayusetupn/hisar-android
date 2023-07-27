@@ -110,6 +110,10 @@ class DaftarUstadAdmin : Fragment() {
 
         getData()
 
+        binding.rank.setOnClickListener {
+            startActivity(Intent(context,RangkingUstad::class.java))
+        }
+
         binding.add.setOnClickListener{
             startActivity(Intent(context,TambahUstad::class.java))
         }

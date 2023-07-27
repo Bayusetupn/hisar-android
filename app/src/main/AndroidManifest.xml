@@ -15,6 +15,12 @@
         android:theme="@style/Base.Theme.HisarApp"
         tools:targetApi="31">
         <activity
+            android:name=".admin.EditAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.RangkingUstad"
+            android:exported="false" />
+        <activity
             android:name=".admin.EditUstad"
             android:exported="false" />
         <activity

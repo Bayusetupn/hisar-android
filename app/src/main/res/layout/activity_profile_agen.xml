@@ -7,7 +7,6 @@
     tools:context=".admin.ProfileAdminActivity"
     android:padding="@dimen/_20sdp"
     android:clipToPadding="false"
-    android:clipChildren="false"
     android:background="@color/bg"
     >
 
@@ -33,291 +32,345 @@
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <ScrollView
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/_20sdp">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_pic"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:src="@drawable/user" />
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                 <LinearLayout
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/nama"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_13ssp"
-                        tools:text="Nama Agen" />
+                    android:orientation="vertical"
+                    android:padding="@dimen/_20sdp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/role"
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_pic"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:src="@drawable/user" />
+
+                        <LinearLayout
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Agen"
-                            android:textSize="@dimen/_12ssp" />
+                            android:layout_marginLeft="@dimen/_7sdp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/nama"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_13ssp"
+                                tools:text="Nama Agen" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/role"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/dmsans_med"
+                                    android:text="Agen"
+                                    android:textSize="@dimen/_12ssp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:src="@drawable/edit" />
+
+                        <ImageView
+                            android:id="@+id/delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/trash" />
+
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_bold"
+                            android:text="Alamat"
+                            android:textColor="@color/navy800"
+                            android:textSize="@dimen/_13ssp" />
+
+                        <TextView
+                            android:id="@+id/alamat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_reg"
+                            android:textColor="@color/navy700"
+                            android:textSize="@dimen/_11ssp"
+                            tools:text="Jl.Nama Jalan No.2 Rt 04/Rw 01 Lamongan Kecamatan Lamongan, Surabaya, Jawa Timur" />
+
+                    </LinearLayout>
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:columnCount="2"
+                        android:rowCount="1">
+
+                        <LinearLayout
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_gravity="start"
+                            android:gravity="start"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="No Ktp"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:id="@+id/ktp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_reg"
+                                android:textColor="@color/navy700"
+                                android:textSize="@dimen/_11ssp"
+                                tools:text="admin" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_11sdp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="No Telepon"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:id="@+id/telp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_reg"
+                                android:textColor="@color/navy700"
+                                android:textSize="@dimen/_11ssp"
+                                tools:text="085156203867" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="Total Jamaah"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:id="@+id/total_jamaah"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_reg"
+                                android:textColor="@color/navy700"
+                                android:textSize="@dimen/_11ssp"
+                                tools:text="2" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_gravity="start"
+                            android:gravity="start"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="Bergabung pada"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:id="@+id/bergabung"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_reg"
+                                android:text="2023-05-02"
+                                android:textColor="@color/navy700"
+                                android:textSize="@dimen/_11ssp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="Username"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:id="@+id/username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_reg"
+                                android:textColor="@color/navy700"
+                                android:textSize="@dimen/_11ssp"
+                                tools:text="admin" />
+                        </LinearLayout>
+                    </GridLayout>
+
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_15sdp"
-                    android:src="@drawable/edit" />
+            </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/trash" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_20sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="Riwayat Login"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/riwayat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/riwayat_login" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="@font/dmsans_bold"
-                    android:text="Alamat"
+                    android:text="Daftar Jamaah"
                     android:textColor="@color/navy800"
-                    android:textSize="@dimen/_13ssp" />
+                    android:textSize="@dimen/_15ssp" />
 
-                <TextView
-                    android:id="@+id/alamat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/dmsans_reg"
-                    android:textColor="@color/navy700"
-                    android:textSize="@dimen/_11ssp"
-                    tools:text="Jl.Nama Jalan No.2 Rt 04/Rw 01 Lamongan Kecamatan Lamongan, Surabaya, Jawa Timur" />
-
+                <ImageView
+                    android:id="@+id/more"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/more" />
             </LinearLayout>
 
-            <GridLayout
+            <ProgressBar
+                android:id="@+id/load"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/navy800"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/daftar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:columnCount="2"
-                android:rowCount="1">
+                android:layout_marginTop="@dimen/_7sdp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                tools:itemCount="3"
+                tools:listitem="@layout/list_daftar_agen" />
 
-                <LinearLayout
+            <TextView
+                android:id="@+id/not_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dmsans_med"
+                android:text="Belum Mempunyai Jamaah"
+                android:textColor="@color/navy800"
+                android:textSize="@dimen/_11ssp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="start"
-                    android:gravity="start"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:text="No Ktp"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <TextView
-                        android:id="@+id/ktp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_reg"
-                        android:textColor="@color/navy700"
-                        android:textSize="@dimen/_11ssp"
-                        tools:text="admin" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_11sdp"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:text="No Telepon"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <TextView
-                        android:id="@+id/telp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_reg"
-                        android:textColor="@color/navy700"
-                        android:textSize="@dimen/_11ssp"
-                        tools:text="085156203867" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:text="Total Jamaah"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <TextView
-                        android:id="@+id/total_jamaah"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_reg"
-                        android:textColor="@color/navy700"
-                        android:textSize="@dimen/_11ssp"
-                        tools:text="2" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="start"
-                    android:gravity="start"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:text="Bergabung pada"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <TextView
-                        android:id="@+id/bergabung"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_reg"
-                        android:text="2023-05-02"
-                        android:textColor="@color/navy700"
-                        android:textSize="@dimen/_11ssp" />
-
-                    <TextView
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:text="Username"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_13ssp" />
-
-                    <TextView
-                        android:id="@+id/username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_reg"
-                        android:textColor="@color/navy700"
-                        android:textSize="@dimen/_11ssp"
-                        tools:text="admin" />
-                </LinearLayout>
-            </GridLayout>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/dmsans_bold"
-            android:text="Daftar Jamaah"
-            android:textColor="@color/navy800"
-            android:textSize="@dimen/_15ssp" />
-
-        <ImageView
-            android:id="@+id/more"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:src="@drawable/more" />
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/load"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:indeterminateTint="@color/navy800"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/daftar"
-        android:layout_marginTop="@dimen/_7sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:clipChildren="false"
-        tools:itemCount="3"
-        tools:listitem="@layout/list_daftar_agen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <TextView
-        android:id="@+id/not_found"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Belum Mempunyai Jamaah"
-        android:fontFamily="@font/dmsans_med"
-        android:textColor="@color/navy800"
-        android:textSize="@dimen/_11ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
