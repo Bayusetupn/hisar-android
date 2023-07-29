@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_270sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_height="@dimen/_150sdp">
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trash"
+                />
+
+
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Apakah Anda Yakin Ingin Menghapus ?"
+                android:fontFamily="@font/dmsans_bold"
+                android:textColor="@color/navy800"
+                android:textSize="@dimen/_12ssp"
+                />
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/yes"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/error"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:fontFamily="@font/dmsans_med"
+                    android:textColor="@color/white"
+                    />
+
+                <Space
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/no"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batal"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/dmsans_med"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

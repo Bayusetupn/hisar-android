@@ -1,15 +1,22 @@
 package com.example.hisar.admin
 
+import android.app.Dialog
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.scale
+import androidx.core.view.drawToBitmap
+import com.bumptech.glide.Glide
 import com.example.hisar.R
 import com.example.hisar.api.ApiClient
-import com.example.hisar.data.Perkab
+import com.example.hisar.data.DocJamaah
 import com.example.hisar.data.PerkabJamaah
 import com.example.hisar.data.RequestId
 import com.example.hisar.databinding.ActivityProfileJamaahBinding
+import com.example.hisar.databinding.ImagePopupBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,6 +55,27 @@ class ProfileJamaah : AppCompatActivity() {
             })
     }
 
+    private fun getDoc(key: String?,id:String){
+        ApiClient.apiService.jamaahDoc(key,RequestId(id))
+            .enqueue(object: Callback<DocJamaah>{
+                override fun onResponse(call: Call<DocJamaah>, response: Response<DocJamaah>) {
+                    if (response.isSuccessful){
+                        val res = response.body()!!
+                        Glide
+                            .with(applicationContext)
+                            .load("https://api.hisar.my.id/${res.data.ktp}")
+                            .placeholder(R.drawable.image_placeholder)
+                            .into(binding.fotoKtp)
+                    }
+                }
+
+                override fun onFailure(call: Call<DocJamaah>, t: Throwable) {
+                    Toast.makeText(applicationContext,"${t.message}",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileJamaahBinding.inflate(layoutInflater)
@@ -57,6 +85,7 @@ class ProfileJamaah : AppCompatActivity() {
         val to:String = sharedPreferences.getString("KEY",null).toString()
 
         intent.getStringExtra("id")?.let { getPerkab(to, it) }
+        intent.getStringExtra("id")?.let { getDoc(to, it) }
 
         //profile
         binding.nama.text = intent.getStringExtra("nama")
@@ -68,7 +97,16 @@ class ProfileJamaah : AppCompatActivity() {
         binding.berangkat.text = if (intent.getStringExtra("berangkat") == null) "Belum ditentukan" else intent.getStringExtra("berangkat")
         binding.paket.text = intent.getStringExtra("paket")
         binding.daftarkan.text = intent.getStringExtra("didaftarkan")
-        binding.keterangan.text = if (intent.getBooleanExtra("keterangan",false) == true) "Lunas" else "Belum Lunas"
+        binding.keterangan.text = if (intent.getBooleanExtra("keterangan",false)) "Lunas" else "Belum Lunas"
+
+        binding.fotoKtp.setOnClickListener {
+            val dialog = Dialog(this)
+            val bind = ImagePopupBinding.inflate(layoutInflater)
+            dialog.setContentView(bind.root)
+            bind.img.setImageDrawable(binding.fotoKtp.drawable)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.show()
+        }
 
         //back
         binding.textView2.setOnClickListener {
