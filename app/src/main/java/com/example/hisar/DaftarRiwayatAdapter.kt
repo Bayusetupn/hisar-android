@@ -6,9 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hisar.data.ResRiwayatJamaah
 import com.example.hisar.databinding.RiwayatLoginBinding
-import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 
 class DaftarRiwayatAdapter(val data: ArrayList<ResRiwayatJamaah.Riwayat>):
     RecyclerView.Adapter<DaftarRiwayatAdapter.ViewHolder>() {
