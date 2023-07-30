@@ -20,12 +20,11 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/icon"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/trash"
+                android:src="@drawable/warning"
                 />
 
 
@@ -42,34 +41,17 @@
                 />
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/yes"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hapus"
-                    android:textAllCaps="false"
-                    android:backgroundTint="@color/error"
-                    android:paddingVertical="@dimen/_10sdp"
-                    android:fontFamily="@font/dmsans_med"
-                    android:textColor="@color/white"
-                    />
-
-                <Space
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="wrap_content"/>
 
                 <Button
                     android:id="@+id/no"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Batal"
+                    android:text="Oke"
                     android:paddingVertical="@dimen/_10sdp"
                     android:textAllCaps="false"
                     android:fontFamily="@font/dmsans_med"

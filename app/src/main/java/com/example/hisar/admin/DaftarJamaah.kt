@@ -88,8 +88,10 @@ class DaftarJamaah : AppCompatActivity() {
 
         getDataJamaah(intent.getStringExtra("key"),intent.getStringExtra("id"))
 
+    }
 
-
-
+    override fun onResume() {
+        super.onResume()
+        getDataJamaah(intent.getStringExtra("key"),intent.getStringExtra("id"))
     }
 }

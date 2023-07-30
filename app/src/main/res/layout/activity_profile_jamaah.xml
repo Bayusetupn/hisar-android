@@ -296,6 +296,96 @@
                                 tools:text="Bayu Setiawan" />
                         </LinearLayout>
                     </GridLayout>
+                    <LinearLayout
+                        android:id="@+id/edit_status_jamaah"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                       <LinearLayout
+                           android:id="@+id/dp"
+                           android:layout_width="match_parent"
+                           android:orientation="horizontal"
+                           android:gravity="center"
+                           android:layout_marginBottom="@dimen/_8sdp"
+                           android:padding="@dimen/_10sdp"
+                           android:background="@drawable/button"
+                           android:layout_height="match_parent">
+
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:src="@drawable/check"
+                               android:layout_marginRight="@dimen/_5sdp"
+                               app:tint="@color/white"
+                               />
+
+                           <TextView
+                               android:fontFamily="@font/dmsans_med"
+                               android:textColor="@color/white"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Tandai Sudah Dp"
+                               android:textSize="@dimen/_11ssp"
+                               />
+                       </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/jadwal"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="@dimen/_10sdp"
+                            android:background="@drawable/button"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/edit"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                app:tint="@color/white"
+                                />
+
+                            <TextView
+                                android:fontFamily="@font/dmsans_med"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Atur Jadwal Berangkat"
+                                android:textSize="@dimen/_11ssp"
+                                />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/riwayat"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Riwayat Login"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:textColor="@color/navy800"
+                                android:textSize="@dimen/_14sdp"
+                                />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/list_riwayat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                tools:listitem="@layout/riwayat_login"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

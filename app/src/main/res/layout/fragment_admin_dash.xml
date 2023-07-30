@@ -76,19 +76,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView">
 
-                <GridLayout
+                <LinearLayout
                     android:id="@+id/gridLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:columnCount="2"
-                    android:rowCount="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.cardview.widget.CardView
                         android:layout_gravity="start"
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:elevation="@dimen/_10sdp"
@@ -141,10 +140,13 @@
 
                     </androidx.cardview.widget.CardView>
 
+
                     <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:elevation="@dimen/_10sdp"
+                        android:layout_weight="1"
                         android:layout_gravity="end"
                         app:cardCornerRadius="@dimen/_7sdp">
 
@@ -195,7 +197,7 @@
 
                     </androidx.cardview.widget.CardView>
 
-                </GridLayout>
+                </LinearLayout>
 
 
                 <androidx.cardview.widget.CardView

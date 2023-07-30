@@ -115,9 +115,18 @@ class DaftarUstadAdmin : Fragment() {
         }
 
         binding.add.setOnClickListener{
-            startActivity(Intent(context,TambahUstad::class.java))
+            startActivity(Intent(context,TambahAgenAcitvity::class.java)
+                .putExtra("title","Tambah Ustad")
+                .putExtra("desc","Masukkan Informasi Ustad Untuk Tambah Ustad")
+                .putExtra("role","ustad")
+            )
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getData()
     }
 
     override fun onDestroyView() {

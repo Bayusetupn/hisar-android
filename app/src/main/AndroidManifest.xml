@@ -42,10 +42,8 @@
             android:name=".admin.Rangking_AgenActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.TambahUstad"
-            android:exported="false" />
-        <activity
             android:name=".admin.TambahAgenAcitvity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".admin.AdminActivity"

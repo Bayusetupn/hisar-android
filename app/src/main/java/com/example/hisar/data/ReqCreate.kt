@@ -5,7 +5,7 @@ data class ReqCreate(
     val nama: String,
     val alamat: String,
     val no_telepon:String,
-    val role:String,
+    val role:String?,
     val username:String,
     val password:String
 

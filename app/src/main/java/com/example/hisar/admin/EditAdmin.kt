@@ -1,7 +1,10 @@
 package com.example.hisar.admin
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -15,6 +18,7 @@ import com.example.hisar.data.Message
 import com.example.hisar.data.RequestEditAdmin
 import com.example.hisar.data.RequestPassword
 import com.example.hisar.databinding.ActivityEditAdminBinding
+import com.example.hisar.databinding.WarningPopupBinding
 import com.example.hisar.login.LoginResponse
 import com.google.gson.Gson
 import retrofit2.Call
@@ -25,12 +29,12 @@ class EditAdmin : AppCompatActivity() {
 
     private lateinit var binding:ActivityEditAdminBinding
 
-    private fun edit(key:String?,name: String,username:String){
-        ApiClient.apiService.editAdmin(key,RequestEditAdmin(name,username))
+    private fun edit(key:String?,name: String,username:String,role:String){
+        ApiClient.apiService.editAdmin(key,RequestEditAdmin(role,name,username))
             .enqueue(object: Callback<Message>{
                 override fun onResponse(call: Call<Message>, response: Response<Message>) {
                     if (response.isSuccessful){
-                        Toast.makeText(applicationContext,"Berhasil Edit Admin",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"Berhasil Edit $role",Toast.LENGTH_SHORT).show()
                         startActivity(Intent(applicationContext,AdminActivity::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         )
@@ -49,7 +53,7 @@ class EditAdmin : AppCompatActivity() {
             })
     }
 
-    private fun editPass(key: String?,newPassword: String){
+    private fun editPass(key: String?,newPassword: String,role:String){
         if (binding.password.text.length < 8){
             binding.error2.visibility = View.VISIBLE
             binding.error2.text = "Minimal 8 Karakter!"
@@ -60,7 +64,7 @@ class EditAdmin : AppCompatActivity() {
             binding.error2.visibility = View.VISIBLE
             binding.error.text = "Form Tidak Boleh Kosong!"
         }else if (binding.password.text.toString() == binding.konfirPassword.text.toString()){
-            ApiClient.apiService.editPassAdmin(key, RequestPassword(newPassword))
+            ApiClient.apiService.editPassAdmin(key, RequestPassword(role,newPassword))
                 .enqueue(object : Callback<Message>{
                     override fun onResponse(call: Call<Message>, response: Response<Message>) {
                         if (response.isSuccessful){
@@ -87,6 +91,7 @@ class EditAdmin : AppCompatActivity() {
 
         val shared = getSharedPreferences("AUTH",Context.MODE_PRIVATE)
         val to:String? = shared.getString("KEY",null)
+        val role:String = shared.getString("ROLE",null).toString()
 
         binding.nama.text = Editable.Factory.getInstance().newEditable(intent.getStringExtra("nama"))
         binding.username.text = Editable.Factory.getInstance().newEditable(intent.getStringExtra("username"))
@@ -106,11 +111,23 @@ class EditAdmin : AppCompatActivity() {
         }
 
         binding.edit.setOnClickListener {
-            edit(to,binding.nama.text.toString(),binding.username.text.toString())
+            if (binding.nama.text.isNotEmpty() && binding.username.text.isNotEmpty() ){
+                edit(to,binding.nama.text.toString(),binding.username.text.toString(),role)
+            }else{
+                val dialog = Dialog(this)
+                val bind = WarningPopupBinding.inflate(layoutInflater)
+                bind.text.text = "Form Tidak Boleh Kosong!"
+                dialog.setContentView(bind.root)
+                bind.no.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
+            }
         }
 
         binding.changePassword.setOnClickListener {
-            editPass(to,binding.password.text.toString())
+            editPass(to,binding.password.text.toString(),role)
         }
 
         binding.textView2.setOnClickListener {

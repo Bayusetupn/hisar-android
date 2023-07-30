@@ -164,6 +164,18 @@ class ProfileAgen : AppCompatActivity() {
 
         val idAgen = intent.getStringExtra("id")
 
+        binding.edit.setOnClickListener {
+            val intent = Intent(applicationContext,EditAgen::class.java)
+                .putExtra("id",intent.getStringExtra("id"))
+                .putExtra("ktp",intent.getStringExtra("ktp"))
+                .putExtra("nama",intent.getStringExtra("nama"))
+                .putExtra("alamat",intent.getStringExtra("alamat"))
+                .putExtra("role",intent.getStringExtra("role"))
+                .putExtra("telp",intent.getStringExtra("telp"))
+                .putExtra("username",intent.getStringExtra("username"))
+            startActivity(intent)
+        }
+
         binding.more.setOnClickListener {
             val intent = Intent(applicationContext,DaftarJamaah::class.java)
                 .putExtra("id",idAgen)

@@ -1,9 +1,8 @@
 package com.example.hisar
 
-import android.os.Build
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hisar.data.RiwayatLogin
 import com.example.hisar.databinding.RiwayatLoginBinding
@@ -20,7 +19,6 @@ class RiwayatLoginAdapter(private val data: ArrayList<RiwayatLogin.Login>): Recy
         return ViewHolder(binding)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RiwayatLoginAdapter.ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
@@ -35,7 +33,7 @@ class RiwayatLoginAdapter(private val data: ArrayList<RiwayatLogin.Login>): Recy
     }
 
     inner class ViewHolder(private val binding: RiwayatLoginBinding) : RecyclerView.ViewHolder(binding.root){
-        @RequiresApi(Build.VERSION_CODES.O)
+        @SuppressLint("SetTextI18n")
         fun bind(item: RiwayatLogin.Login){
             val date = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val time = DateTimeFormatter.ofPattern("HH:mm")

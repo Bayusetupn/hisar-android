@@ -1,5 +1,6 @@
 package com.example.hisar.admin
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,9 +27,13 @@ class ProfileAdminActivity : AppCompatActivity() {
         val ustad = intent.getStringExtra("totalUstad")
         val jamaah = intent.getStringExtra("totalJamaah")
 
+        val sharedPreferences = getSharedPreferences("AUTH",Context.MODE_PRIVATE)
+        val role = sharedPreferences.getString("ROLE",null)
+
         binding.totalAgen.text = agen
         binding.totalUstad.text = ustad
         binding.totalJamaah.text = jamaah
+        binding.role.text = role
 
         binding.edit.setOnClickListener {
             val intent = Intent(applicationContext,EditAdmin::class.java)

@@ -47,9 +47,16 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful){
                             val res = response.body()!!
-                            saveData(res.to.toString())
-                            startActivity(Intent(applicationContext,AdminActivity::class.java))
-                            finish()
+                            if (res.role == "admin" || res.role == "manager"){
+                                saveData(res.to.toString(),res.role)
+                                startActivity(Intent(applicationContext,AdminActivity::class.java))
+                                finish()
+                            }else{
+                                binding.error.visibility = View.VISIBLE
+                                binding.text.visibility = View.VISIBLE
+                                binding.load.visibility = View.GONE
+                                binding.error.text = "Kamu ${res.role}!"
+                            }
                         }else{
                             val res = Gson().fromJson(response.errorBody()?.string(),LoginResponse::class.java)
                             binding.error.visibility = View.VISIBLE
@@ -71,14 +78,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun saveData(data:String){
+    fun saveData(data:String,role:String){
         val sharedPreferences = getSharedPreferences("AUTH",Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
         editor.apply {
             putString("KEY",data)
+            putString("ROLE",role)
         }.apply()
     }
+
 
 //    override fun onDestroy() {
 //        super.onDestroy()

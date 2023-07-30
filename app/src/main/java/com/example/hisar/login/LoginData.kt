@@ -7,5 +7,6 @@ data class LoginRequest(
 
 data class LoginResponse(
     val status: String?,
-    val to: String?
+    val to: String?,
+    val role:String?
 )

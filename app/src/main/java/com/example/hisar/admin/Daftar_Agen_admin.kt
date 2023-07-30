@@ -111,11 +111,19 @@ class DaftarAgenAdmin : Fragment() {
             startActivity(Intent(context,Rangking_AgenActivity::class.java))
         }
         binding.add.setOnClickListener{
-            startActivity(Intent(context,TambahAgenAcitvity::class.java))
+            startActivity(Intent(context,TambahAgenAcitvity::class.java)
+                .putExtra("title","Tambah Agen")
+                .putExtra("desc","Masukkan Informasi Agen Untuk Tambah Agen")
+                .putExtra("role","agen")
+            )
         }
         getData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -5,10 +5,12 @@ import com.example.hisar.data.DocJamaah
 import com.example.hisar.data.Jamaah
 import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
+import com.example.hisar.data.ReqAgenEdit
 import com.example.hisar.data.ReqCreate
 import com.example.hisar.data.RequestEditAdmin
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.RequestPassword
+import com.example.hisar.data.ResRiwayatJamaah
 import com.example.hisar.data.RiwayatLogin
 import com.example.hisar.login.LoginRequest
 import com.example.hisar.login.LoginResponse
@@ -41,7 +43,11 @@ interface ApiServices {
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("tambah")
-    fun ustad(@Header("x-auth-token") key: String,@Body data: ReqCreate): Call<Message>
+    fun tambah(@Header("x-auth-token") key: String,@Body data: ReqCreate): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("agen/edit")
+    fun editAgen(@Header("x-auth-token") key: String,@Body data: ReqAgenEdit): Call<Message>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @GET("jamaah")
@@ -54,6 +60,14 @@ interface ApiServices {
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("agen/jamaah")
     fun jamaah(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<Jamaah>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("jamaah/dp")
+    fun jamaahDp(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @POST("jamaah/jadwal")
+    fun jamaahJadwal(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<ResRiwayatJamaah>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("jamaah/doc")

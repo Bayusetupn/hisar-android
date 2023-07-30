@@ -56,9 +56,10 @@
                 >
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tambah Agen"
+                    tools:text="Tambah Agen"
                     android:fontFamily="@font/dmsans_bold"
                     android:textColor="@color/navy800"
                     android:textSize="@dimen/_18ssp"
@@ -66,9 +67,10 @@
                     />
 
                 <TextView
+                    android:id="@+id/desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Masukkan Informasi Agen Untuk Menambahkan Agen"
+                    tools:text="Masukkan Informasi Agen Untuk Menambahkan Agen"
                     android:fontFamily="@font/dmsans_reg"
                     android:textColor="@color/navy800"
                     android:textSize="@dimen/_12ssp"
@@ -118,7 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/dmsans_med"
-                    android:hint="Nama Agen"
+                    android:hint="Nama"
                     android:textSize="@dimen/_12ssp"
                     android:paddingHorizontal="@dimen/_15sdp"
                     android:paddingVertical="@dimen/_12sdp"
@@ -254,7 +256,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/dmsans_med"
-                    android:hint="Kecamatan"
+                    android:hint="Kelurahan"
                     android:textSize="@dimen/_12ssp"
                     android:paddingHorizontal="@dimen/_15sdp"
                     android:paddingVertical="@dimen/_12sdp"
@@ -351,7 +353,7 @@
                     />
 
                 <EditText
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:id="@+id/pendukung"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -376,7 +378,7 @@
                     />
 
                 <EditText
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -440,6 +442,7 @@
                     tools:layout_editor_absoluteX="26dp" />
 
                 <Button
+                    android:id="@+id/tambah"
                     android:textAllCaps="false"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:layout_width="match_parent"
