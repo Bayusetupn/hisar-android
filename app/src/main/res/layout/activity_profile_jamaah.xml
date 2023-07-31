@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.ProfileJamaah"
-    android:padding="@dimen/_20sdp"
-    android:clipToPadding="false"
     android:background="@color/bg"
-    >
+    android:clipToPadding="false"
+    android:padding="@dimen/_20sdp"
+    tools:context=".admin.ProfileJamaah">
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -32,13 +32,13 @@
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <ScrollView
-        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:fillViewport="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
@@ -296,92 +296,111 @@
                                 tools:text="Bayu Setiawan" />
                         </LinearLayout>
                     </GridLayout>
+
                     <LinearLayout
                         android:id="@+id/edit_status_jamaah"
-                        android:layout_marginTop="@dimen/_15sdp"
                         android:layout_width="match_parent"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:orientation="vertical">
 
-                       <LinearLayout
-                           android:id="@+id/dp"
-                           android:layout_width="match_parent"
-                           android:orientation="horizontal"
-                           android:gravity="center"
-                           android:layout_marginBottom="@dimen/_8sdp"
-                           android:padding="@dimen/_10sdp"
-                           android:background="@drawable/button"
-                           android:layout_height="match_parent">
+                        <LinearLayout
+                            android:id="@+id/dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/_8sdp"
+                            android:background="@drawable/button"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
 
-                           <ImageView
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:src="@drawable/check"
-                               android:layout_marginRight="@dimen/_5sdp"
-                               app:tint="@color/white"
-                               />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:src="@drawable/check"
+                                app:tint="@color/white" />
 
-                           <TextView
-                               android:fontFamily="@font/dmsans_med"
-                               android:textColor="@color/white"
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"
-                               android:text="Tandai Sudah Dp"
-                               android:textSize="@dimen/_11ssp"
-                               />
-                       </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_med"
+                                android:text="Tandai Sudah Dp"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/jadwal"
                             android:layout_width="match_parent"
-                            android:orientation="horizontal"
-                            android:gravity="center"
-                            android:padding="@dimen/_10sdp"
+                            android:layout_height="match_parent"
                             android:background="@drawable/button"
-                            android:layout_height="match_parent">
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
 
                             <ImageView
                                 android:layout_width="@dimen/_20sdp"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/edit"
                                 android:layout_marginRight="@dimen/_5sdp"
-                                app:tint="@color/white"
-                                />
+                                android:src="@drawable/edit"
+                                app:tint="@color/white" />
 
                             <TextView
-                                android:fontFamily="@font/dmsans_med"
-                                android:textColor="@color/white"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/dmsans_med"
                                 android:text="Atur Jadwal Berangkat"
-                                android:textSize="@dimen/_11ssp"
-                                />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_11ssp" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/riwayat"
                             android:visibility="gone"
+                            android:id="@+id/date"
                             android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:layout_marginTop="@dimen/_15sdp"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal">
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/btn_date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Riwayat Login"
-                                android:fontFamily="@font/dmsans_bold"
-                                android:textColor="@color/navy800"
-                                android:textSize="@dimen/_14sdp"
-                                />
+                                android:layout_weight="1"
+                                android:background="@drawable/text_input"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingVertical="@dimen/_12sdp">
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/list_riwayat"
+                                <TextView
+                                    android:id="@+id/date_result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_7sdp"
+                                    android:fontFamily="@font/dmsans_med"
+                                    android:text="Pilih Tanggal"
+                                    android:textColor="@color/navy800"
+                                    android:textSize="@dimen/_11ssp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/calendar"
+                                    app:tint="@color/navy800" />
+
+                            </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/send"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                tools:listitem="@layout/riwayat_login"
-                                />
+                                android:background="@drawable/button"
+                                android:padding="@dimen/_10sdp"
+                                app:tint="@color/white"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:src="@drawable/send" />
 
                         </LinearLayout>
 
@@ -392,16 +411,55 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/content"
+                android:id="@+id/riwayat"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:cardUseCompatPadding="true"
-                android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="Riwayat Jadwal"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_riwayat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/riwayat_login" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/riwayat">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -419,122 +477,122 @@
                         android:textSize="@dimen/_15ssp" />
 
 
-                        <RadioButton
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:id="@+id/koper"
-                            android:enabled="false"
-                            android:buttonTint="@color/accent"
-                            android:button="@drawable/radio_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Koper + Tas Paspor"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/koper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Koper + Tas Paspor"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:id="@+id/batik"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Kain Batik"
-                            android:button="@drawable/radio_button"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/batik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Kain Batik"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:button="@drawable/radio_button"
-                            android:id="@+id/ihram"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Kain Ihram"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/ihram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Kain Ihram"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:id="@+id/mukena"
-                            android:button="@drawable/radio_button"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Mukena"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/mukena"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Mukena"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:id="@+id/syal"
-                            android:enabled="false"
-                            android:button="@drawable/radio_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Syal"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/syal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Syal"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:button="@drawable/radio_button"
-                            android:id="@+id/panduan"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Buku Panduan"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/panduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Buku Panduan"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:button="@drawable/radio_button"
-                            android:id="@+id/doa"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Buku Do'a"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/doa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Buku Do'a"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:button="@drawable/radio_button"
-                            android:id="@+id/sholawat"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Booklet Sholawat"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/sholawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Booklet Sholawat"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
-                        <RadioButton
-                            android:buttonTint="@color/accent"
-                            android:paddingLeft="@dimen/_5sdp"
-                            android:button="@drawable/radio_button"
-                            android:id="@+id/peta"
-                            android:enabled="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Booklet Peta Jannatul Baqi"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_12ssp" />
+                    <RadioButton
+                        android:id="@+id/peta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Booklet Peta Jannatul Baqi"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
 
                 </LinearLayout>
 
@@ -543,21 +601,19 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardUseCompatPadding="true"
                 android:layout_marginTop="@dimen/_5sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@+id/content"
-                app:layout_constraintStart_toStartOf="parent"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                >
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/content">
 
                 <LinearLayout
-                    android:gravity="start"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/_20sdp"
+                    android:gravity="start"
                     android:orientation="vertical"
-                    >
+                    android:padding="@dimen/_20sdp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -568,28 +624,26 @@
                         android:textSize="@dimen/_15ssp" />
 
                     <LinearLayout
-                        android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_marginRight="@dimen/_10sdp"
                             android:layout_width="@dimen/_10sdp"
                             android:layout_height="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_100sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
                             android:backgroundTint="@color/navy800"
-                            />
+                            app:cardCornerRadius="@dimen/_100sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Foto Ktp"
                             android:fontFamily="@font/dmsans_reg"
-                            android:textSize="@dimen/_13ssp"
+                            android:text="Foto Ktp"
                             android:textColor="@color/navy800"
-                            />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -597,32 +651,29 @@
                         android:id="@+id/foto_ktp"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user"
-                        />
+                        android:src="@drawable/user" />
 
                     <LinearLayout
-                        android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_marginRight="@dimen/_10sdp"
                             android:layout_width="@dimen/_10sdp"
                             android:layout_height="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_100sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
                             android:backgroundTint="@color/navy800"
-                            />
+                            app:cardCornerRadius="@dimen/_100sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Foto KK"
                             android:fontFamily="@font/dmsans_reg"
-                            android:textSize="@dimen/_13ssp"
+                            android:text="Foto KK"
                             android:textColor="@color/navy800"
-                            />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -630,32 +681,29 @@
                         android:id="@+id/foto_kk"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user"
-                        />
+                        android:src="@drawable/user" />
 
                     <LinearLayout
-                        android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_marginRight="@dimen/_10sdp"
                             android:layout_width="@dimen/_10sdp"
                             android:layout_height="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_100sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
                             android:backgroundTint="@color/navy800"
-                            />
+                            app:cardCornerRadius="@dimen/_100sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Foto Paspor"
                             android:fontFamily="@font/dmsans_reg"
-                            android:textSize="@dimen/_13ssp"
+                            android:text="Foto Paspor"
                             android:textColor="@color/navy800"
-                            />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -663,32 +711,29 @@
                         android:id="@+id/foto_paspor"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user"
-                        />
+                        android:src="@drawable/user" />
 
                     <LinearLayout
-                        android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_marginRight="@dimen/_10sdp"
                             android:layout_width="@dimen/_10sdp"
                             android:layout_height="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_100sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
                             android:backgroundTint="@color/navy800"
-                            />
+                            app:cardCornerRadius="@dimen/_100sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pas Foto"
                             android:fontFamily="@font/dmsans_reg"
-                            android:textSize="@dimen/_13ssp"
+                            android:text="Pas Foto"
                             android:textColor="@color/navy800"
-                            />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -696,32 +741,29 @@
                         android:id="@+id/pas_foto"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user"
-                        />
+                        android:src="@drawable/user" />
 
                     <LinearLayout
-                        android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_marginRight="@dimen/_10sdp"
                             android:layout_width="@dimen/_10sdp"
                             android:layout_height="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_100sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
                             android:backgroundTint="@color/navy800"
-                            />
+                            app:cardCornerRadius="@dimen/_100sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Akte Nikah"
                             android:fontFamily="@font/dmsans_reg"
-                            android:textSize="@dimen/_13ssp"
+                            android:text="Akte Nikah"
                             android:textColor="@color/navy800"
-                            />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -729,32 +771,29 @@
                         android:id="@+id/akte_nikah"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user"
-                        />
+                        android:src="@drawable/user" />
 
                     <LinearLayout
-                        android:layout_marginVertical="@dimen/_10sdp"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:gravity="center_vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_marginRight="@dimen/_10sdp"
                             android:layout_width="@dimen/_10sdp"
                             android:layout_height="@dimen/_10sdp"
-                            app:cardCornerRadius="@dimen/_100sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
                             android:backgroundTint="@color/navy800"
-                            />
+                            app:cardCornerRadius="@dimen/_100sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Akte Kelahiran"
                             android:fontFamily="@font/dmsans_reg"
-                            android:textSize="@dimen/_13ssp"
+                            android:text="Akte Kelahiran"
                             android:textColor="@color/navy800"
-                            />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -762,8 +801,7 @@
                         android:id="@+id/akte_lahir"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user"
-                        />
+                        android:src="@drawable/user" />
 
                 </LinearLayout>
 

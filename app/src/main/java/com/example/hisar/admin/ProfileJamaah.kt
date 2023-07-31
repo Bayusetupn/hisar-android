@@ -1,5 +1,6 @@
 package com.example.hisar.admin
 
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -7,7 +8,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.View
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.scale
@@ -21,8 +24,10 @@ import com.example.hisar.api.ApiClient
 import com.example.hisar.data.DocJamaah
 import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
+import com.example.hisar.data.ReqJadwal
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.ResRiwayatJamaah
+import com.example.hisar.data.RiwayatLogin
 import com.example.hisar.databinding.ActivityProfileJamaahBinding
 import com.example.hisar.databinding.ConfirmPopupBinding
 import com.example.hisar.databinding.ImagePopupBinding
@@ -31,6 +36,12 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
 
 class ProfileJamaah : AppCompatActivity() {
 
@@ -52,6 +63,10 @@ class ProfileJamaah : AppCompatActivity() {
                     dialog.dismiss()
                     setDp(key,id)
                 }
+                "jadwal"->{
+                    dialog.dismiss()
+                    setJadwal(key,id,binding.dateResult.text.toString())
+                }
             }
         }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -68,11 +83,33 @@ class ProfileJamaah : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful){
                         val res = response.body()!!
-                        riwayat.adapter = DaftarRiwayatAdapter(res.data)
+                        val sort: ArrayList<ResRiwayatJamaah.Riwayat> = ArrayList(res.data.sortedByDescending { it.id})
+                        riwayat.adapter = DaftarRiwayatAdapter(sort)
                     }
                 }
 
                 override fun onFailure(call: Call<ResRiwayatJamaah>, t: Throwable) {
+                    Toast.makeText(applicationContext,"Server Error!",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+    }
+
+    private fun setJadwal(key: String,id: String,value: String){
+        ApiClient.apiService.jamaahSetJadwal(key, ReqJadwal(id,value))
+            .enqueue(object: Callback<Message>{
+                override fun onResponse(call: Call<Message>, response: Response<Message>) {
+                    if (response.isSuccessful){
+                        Toast.makeText(applicationContext,"Sukses Merubah Jadwal!",Toast.LENGTH_SHORT).show()
+                        binding.date.visibility = View.GONE
+                        binding.riwayat.visibility = View.GONE
+                        binding.berangkat.text = value
+                        binding.dateResult.text = "Pilih Tanggal"
+                        getRiwayat(key,id)
+                    }
+                }
+
+                override fun onFailure(call: Call<Message>, t: Throwable) {
                     Toast.makeText(applicationContext,"Server Error!",Toast.LENGTH_SHORT).show()
                 }
 
@@ -215,11 +252,49 @@ class ProfileJamaah : AppCompatActivity() {
         binding.jadwal.setOnClickListener {
             binding.riwayat.visibility.apply {
                 when(this){
-                    View.VISIBLE-> binding.riwayat.visibility = View.GONE
-                    View.GONE -> binding.riwayat.visibility = View.VISIBLE
+                    View.VISIBLE-> {
+                        binding.riwayat.visibility = View.GONE
+                        binding.date.visibility = View.GONE
+                    }
+                    View.GONE ->{
+                        binding.riwayat.visibility = View.VISIBLE
+                        binding.date.visibility = View.VISIBLE
+                    }
                 }
             }
         }
+
+        val today = Calendar.getInstance()
+        val year = today.get(Calendar.YEAR)
+        val month = today.get(Calendar.MONTH)
+        val day = today.get(Calendar.DAY_OF_MONTH)
+
+        val date = DatePickerDialog(this,object: DatePickerDialog.OnDateSetListener{
+            override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
+                binding.dateResult.text = String.format("%d-$%d-%d",p1,p2+1,p3).replace("$","0")
+            }
+        },year,month,day)
+
+        binding.btnDate.setOnClickListener {
+            date.show()
+        }
+
+        binding.send.setOnClickListener {
+            if (binding.dateResult.text.toString() != "Pilih Tanggal"){
+                showWarning(to,intent.getStringExtra("id").toString(),"Ubah Tanggal Berangkat ?","jadwal")
+            }else{
+                val dialog = Dialog(this)
+                val bind = WarningPopupBinding.inflate(layoutInflater)
+                dialog.setContentView(bind.root)
+                bind.text.text = "Tanggal Tidak Boleh Kosong!"
+                bind.no.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
+            }
+        }
+
 
         binding.dp.setOnClickListener{
             showWarning(to,intent.getStringExtra("id").toString(),"Yakin Merubah Status Dp ?","dp")

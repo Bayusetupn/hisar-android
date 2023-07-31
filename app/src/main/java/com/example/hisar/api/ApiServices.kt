@@ -7,6 +7,7 @@ import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
 import com.example.hisar.data.ReqAgenEdit
 import com.example.hisar.data.ReqCreate
+import com.example.hisar.data.ReqJadwal
 import com.example.hisar.data.RequestEditAdmin
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.RequestPassword
@@ -68,6 +69,10 @@ interface ApiServices {
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("jamaah/jadwal")
     fun jamaahJadwal(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<ResRiwayatJamaah>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @POST("jamaah/update/jadwal")
+    fun jamaahSetJadwal(@Header("x-auth-token") key: String?,@Body data: ReqJadwal ): Call<Message>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("jamaah/doc")
