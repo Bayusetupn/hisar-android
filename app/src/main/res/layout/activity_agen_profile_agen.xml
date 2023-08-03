@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.ProfileAgen"
+    tools:context=".agen.AgenProfile_Agen"
     android:padding="@dimen/_20sdp"
     android:clipToPadding="false"
     android:background="@color/bg"
@@ -104,24 +104,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/dmsans_med"
-                                    android:text="Agen"
+                                    tools:text="Agen"
                                     android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
                         </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/edit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_15sdp"
-                            android:src="@drawable/edit" />
-
-                        <ImageView
-                            android:id="@+id/delete"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/trash" />
 
                     </LinearLayout>
 
@@ -265,66 +252,6 @@
                                 tools:text="admin" />
                         </LinearLayout>
                     </GridLayout>
-                    <LinearLayout
-                        android:id="@+id/whatsapp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/whatsapp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/sms"
-                            app:tint="@color/navy800" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Whatsapp"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_20sdp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/dmsans_bold"
-                        android:text="Riwayat Login"
-                        android:textColor="@color/navy800"
-                        android:textSize="@dimen/_15sdp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/riwayat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        tools:itemCount="10"
-                        tools:listitem="@layout/riwayat_login" />
 
                 </LinearLayout>
 
@@ -359,7 +286,7 @@
             <ProgressBar
                 android:id="@+id/load"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:indeterminateTint="@color/navy800"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -384,7 +311,7 @@
             <TextView
                 android:id="@+id/not_found"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:fontFamily="@font/dmsans_med"
                 android:text="Belum Mempunyai Jamaah"
                 android:textColor="@color/navy800"

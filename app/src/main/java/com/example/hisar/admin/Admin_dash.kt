@@ -2,7 +2,6 @@ package com.example.hisar.admin
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import com.example.hisar.data.Data
 import com.example.hisar.data.Jamaah
 import com.example.hisar.databinding.FragmentAdminDashBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarMenu
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -81,7 +79,7 @@ class Admin_dash : Fragment() {
                     override fun onResponse(call: Call<Jamaah>, response: Response<Jamaah>) {
                         if (response.isSuccessful){
                             val res= response.body()!!
-                            binding.totalJamaah.text = res.data?.size.toString()
+                            binding.totalJamaah.text = res.data.size.toString()
                             binding.load.visibility = View.GONE
                             binding.daftar.visibility = View.VISIBLE
 
@@ -89,7 +87,7 @@ class Admin_dash : Fragment() {
                     }
 
                     override fun onFailure(call: Call<Jamaah>, t: Throwable) {
-                        TODO("Not yet implemented")
+                        Toast.makeText(context,"Server Error!",Toast.LENGTH_SHORT).show()
                     }
 
                 })

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".agen.EditPerlengkapanJamaah"
+    android:padding="@dimen/_20sdp"
+    >
+
+    <LinearLayout
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:fontFamily="@font/dmsans_med"
+            android:text="Kembali"
+            android:textColor="@color/navy800"
+            android:textSize="@dimen/_15ssp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/_7sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="Perlengkapan Sekarang"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_15ssp" />
+
+
+                    <RadioButton
+                        android:id="@+id/koper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Koper + Tas Paspor"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/batik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Kain Batik"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/ihram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Kain Ihram"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/mukena"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Mukena"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/syal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Syal"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/panduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Buku Panduan"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/doa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Buku Do'a"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/sholawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Booklet Sholawat"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/peta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:enabled="false"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Booklet Peta Jannatul Baqi"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/new_perkab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_15sdp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="Edit Perlengkapan"
+                        android:textColor="@color/navy800"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_med"
+                        android:text="Ceklis Untuk Edit Perlengkapan Jamaah"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+
+                    <RadioButton
+                        android:id="@+id/new_koper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Koper + Tas Paspor"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_batik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Kain Batik"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_ihram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Kain Ihram"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_mukena"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Mukena"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_syal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Syal"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_panduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Buku Panduan"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_doa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Buku Do'a"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_sholawat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Booklet Sholawat"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <RadioButton
+                        android:id="@+id/new_peta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_button"
+                        android:buttonTint="@color/accent"
+                        android:fontFamily="@font/dmsans_med"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:text="Booklet Peta Jannatul Baqi"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <LinearLayout
+                        android:id="@+id/edit_perkab"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/button"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:src="@drawable/check"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_med"
+                            android:text="Edit Perlengkapan"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11ssp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

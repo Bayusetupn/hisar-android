@@ -7,7 +7,7 @@
     android:padding="@dimen/_20sdp"
     android:background="@color/bg"
     android:clipToPadding="false"
-    tools:context=".admin.TambahAgenAcitvity"
+    tools:context=".agen.EditProfileAgen"
     >
 
     <ImageView

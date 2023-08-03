@@ -1,18 +1,13 @@
-package com.example.hisar.admin
+package com.example.hisar.agen
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.app.Dialog
-import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Environment
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,54 +19,22 @@ import com.example.hisar.api.ApiClient
 import com.example.hisar.data.DocJamaah
 import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
-import com.example.hisar.data.ReqJadwal
+import com.example.hisar.data.ReqJamaahDelete
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.ResRiwayatJamaah
-import com.example.hisar.databinding.ActivityProfileJamaahBinding
+import com.example.hisar.databinding.ActivityProfileJamaahSelfBinding
 import com.example.hisar.databinding.ConfirmPopupBinding
 import com.example.hisar.databinding.ImagePopupBinding
-import com.example.hisar.databinding.WarningPopupBinding
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Calendar
-import java.util.UUID
 
 @SuppressLint("SetTextI18n")
-class ProfileJamaah : AppCompatActivity() {
+class ProfileJamaah_Self : AppCompatActivity() {
 
-    private lateinit var binding: ActivityProfileJamaahBinding
+    private lateinit var binding: ActivityProfileJamaahSelfBinding
     private lateinit var riwayat:RecyclerView
 
-
-    private fun showWarning(key: String, id: String, text:String, to:String){
-        val dialog = Dialog(this)
-        val bind = ConfirmPopupBinding.inflate(layoutInflater)
-        bind.icon.setImageResource(R.drawable.warning)
-        bind.no.setOnClickListener {
-            dialog.dismiss()
-        }
-        bind.text.text = text
-        bind.yes.text = "Yakin"
-        bind.yes.setOnClickListener {
-            when(to){
-                "dp"->{
-                    dialog.dismiss()
-                    setDp(key,id)
-                }
-                "jadwal"->{
-                    dialog.dismiss()
-                    setJadwal(key,id,binding.dateResult.text.toString())
-                }
-            }
-        }
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(bind.root)
-        dialog.show()
-    }
 
     private fun getRiwayat(key: String,id: String){
         ApiClient.apiService.jamaahJadwal(key,RequestId(id))
@@ -94,47 +57,6 @@ class ProfileJamaah : AppCompatActivity() {
             })
     }
 
-    private fun setJadwal(key: String,id: String,value: String){
-        ApiClient.apiService.jamaahSetJadwal(key, ReqJadwal(id,value))
-            .enqueue(object: Callback<Message>{
-                override fun onResponse(call: Call<Message>, response: Response<Message>) {
-                    if (response.isSuccessful){
-                        Toast.makeText(applicationContext,"Sukses Merubah Jadwal!",Toast.LENGTH_SHORT).show()
-                        binding.date.visibility = View.GONE
-                        binding.riwayat.visibility = View.GONE
-                        binding.berangkat.text = value
-                        binding.dateResult.text = "Pilih Tanggal"
-                        getRiwayat(key,id)
-                    }
-                }
-
-                override fun onFailure(call: Call<Message>, t: Throwable) {
-                    Toast.makeText(applicationContext,"Server Error!",Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
-
-    private fun setDp(key:String,id:String){
-        ApiClient.apiService.jamaahDp(key,RequestId(id))
-            .enqueue(object: Callback<Message>{
-                override fun onResponse(call: Call<Message>, response: Response<Message>) {
-                    if (response.isSuccessful){
-                        Toast.makeText(applicationContext,"Sukses Merubah Status Dp!",Toast.LENGTH_SHORT).show()
-                        binding.keterangan.text = "Lunas"
-                        binding.dp.visibility = View.GONE
-                    }else{
-                        val res = Gson().fromJson(response.errorBody()?.string(),Message::class.java)
-                        Toast.makeText(applicationContext,res.message.toString(),Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<Message>, t: Throwable) {
-                    Toast.makeText(applicationContext,"${t.message}",Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
     private fun getPerkab(key: String?,id: String){
         ApiClient.apiService.perkab(key, RequestId(id))
             .enqueue(object: Callback<PerkabJamaah>{
@@ -165,47 +87,12 @@ class ProfileJamaah : AppCompatActivity() {
             })
     }
 
-    private fun valid(img:String?,view: LinearLayout,title: String,url: String){
-        if (img != null){
-            view.visibility = View.VISIBLE
-            view.setOnClickListener {
-                download(title,url)
-            }
-        }else{
-            view.visibility = View.GONE
-        }
-    }
-
-    private fun uuid(): String{
-        return UUID.randomUUID().toString().substring(1,5)
-    }
-
-    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-    private val now = LocalDate.now().format(formatter)
-    private fun download(title:String,url:String){
-        val req = DownloadManager.Request(Uri.parse(url))
-            .setTitle("${title}_$now-${uuid()}")
-            .setDescription("Downloading...")
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            .setAllowedOverMetered(true)
-            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,"${title}_$now-${uuid()}")
-        val down = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
-
-        down.enqueue(req)
-    }
-
     private fun getDoc(key: String?,id:String){
         ApiClient.apiService.jamaahDoc(key,RequestId(id))
             .enqueue(object: Callback<DocJamaah>{
                 override fun onResponse(call: Call<DocJamaah>, response: Response<DocJamaah>) {
                     if (response.isSuccessful){
                         val res = response.body()!!
-                        valid(res.data.ktp,binding.unduhKtp,"Ktp_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.ktp}")
-                        valid(res.data.kk,binding.unduhKk,"Kk_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.kk}")
-                        valid(res.data.akteK,binding.unduhAkteK,"Akte_Kelahiran_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.akteK}")
-                        valid(res.data.akteN,binding.unduhAkteN,"Akte_Nikah_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.akteN}")
-                        valid(res.data.passport,binding.unduhPaspor,"Paspor_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.passport}")
-                        valid(res.data.foto,binding.unduhPasfoto,"Pas_Foto_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.foto}")
                         Glide
                             .with(applicationContext)
                             .load("https://api.hisar.my.id/${res.data.ktp}")
@@ -247,14 +134,33 @@ class ProfileJamaah : AppCompatActivity() {
             })
     }
 
+    private fun deleteJamaah(key:String,id: String,userId:String){
+        ApiClient.apiService.hapusJamaah(key, ReqJamaahDelete(id,userId))
+            .enqueue(object : Callback<Message>{
+                override fun onResponse(call: Call<Message>, response: Response<Message>) {
+                    if (response.isSuccessful){
+                        startActivity(Intent(applicationContext,AgenActivity::class.java)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        )
+                        finish()
+                    }
+                }
+
+                override fun onFailure(call: Call<Message>, t: Throwable) {
+                    Toast.makeText(applicationContext,"Server Error!",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProfileJamaahBinding.inflate(layoutInflater)
+        binding = ActivityProfileJamaahSelfBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val sharedPreferences = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         val to:String = sharedPreferences.getString("KEY",null).toString()
-        val role:String = sharedPreferences.getString("ROLE",null).toString()
+        sharedPreferences.getString("ROLE",null).toString()
         riwayat = binding.listRiwayat
 
         riwayat.layoutManager = object : LinearLayoutManager(applicationContext){
@@ -268,68 +174,6 @@ class ProfileJamaah : AppCompatActivity() {
         }
 
         getRiwayat(to,intent.getStringExtra("id").toString())
-
-        role.apply {
-            when(this){
-                "admin"-> binding.editStatusJamaah.visibility = View.GONE
-                "manager"->binding.editStatusJamaah.visibility = View.VISIBLE
-            }
-        }
-
-        intent.getBooleanExtra("keterangan",false).apply {
-            when(this){
-                true->binding.dp.visibility = View.GONE
-                false->binding.dp.visibility = View.VISIBLE
-            }
-        }
-
-        binding.jadwal.setOnClickListener {
-            binding.riwayat.visibility.apply {
-                when(this){
-                    View.VISIBLE-> {
-                        binding.riwayat.visibility = View.GONE
-                        binding.date.visibility = View.GONE
-                    }
-                    View.GONE ->{
-                        binding.riwayat.visibility = View.VISIBLE
-                        binding.date.visibility = View.VISIBLE
-                    }
-                }
-            }
-        }
-
-        val today = Calendar.getInstance()
-        val year = today.get(Calendar.YEAR)
-        val month = today.get(Calendar.MONTH)
-        val day = today.get(Calendar.DAY_OF_MONTH)
-
-        val date = DatePickerDialog(this,
-            { _, p1, p2, p3 -> binding.dateResult.text = String.format("%d-$%d-%d",p1,p2+1,p3).replace("$","0") },year,month,day)
-
-        binding.btnDate.setOnClickListener {
-            date.show()
-        }
-
-        binding.send.setOnClickListener {
-            if (binding.dateResult.text.toString() != "Pilih Tanggal"){
-                showWarning(to,intent.getStringExtra("id").toString(),"Ubah Tanggal Berangkat ?","jadwal")
-            }else{
-                val dialog = Dialog(this)
-                val bind = WarningPopupBinding.inflate(layoutInflater)
-                dialog.setContentView(bind.root)
-                bind.text.text = "Tanggal Tidak Boleh Kosong!"
-                bind.no.setOnClickListener {
-                    dialog.dismiss()
-                }
-                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog.show()
-            }
-        }
-
-
-        binding.dp.setOnClickListener{
-            showWarning(to,intent.getStringExtra("id").toString(),"Yakin Merubah Status Dp ?","dp")
-        }
 
         intent.getStringExtra("id")?.let { getPerkab(to, it) }
         intent.getStringExtra("id")?.let { getDoc(to, it)}
@@ -347,8 +191,17 @@ class ProfileJamaah : AppCompatActivity() {
         binding.daftarkan.text = intent.getStringExtra("didaftarkan")
         binding.keterangan.text = if (intent.getBooleanExtra("keterangan",false)) "Lunas" else "Belum Lunas"
 
-        binding.whatsapp.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW,Uri.parse("https://wa.me/62${intent.getStringExtra("telp")?.substring(1)}"))
+        binding.editPerkab.setOnClickListener {
+            val intent = Intent(applicationContext,EditPerlengkapanJamaah::class.java)
+                .putExtra("koper",binding.koper.isChecked)
+                .putExtra("batik",binding.batik.isChecked)
+                .putExtra("ihram",binding.ihram.isChecked)
+                .putExtra("mukena",binding.mukena.isChecked)
+                .putExtra("syal",binding.syal.isChecked)
+                .putExtra("panduan",binding.panduan.isChecked)
+                .putExtra("doa",binding.doa.isChecked)
+                .putExtra("sholawat",binding.sholawat.isChecked)
+                .putExtra("peta",binding.peta.isChecked)
             startActivity(intent)
         }
 
@@ -402,6 +255,23 @@ class ProfileJamaah : AppCompatActivity() {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.show()
         }
+
+        binding.delete.setOnClickListener {
+            val dialog = Dialog(this)
+            val bind = ConfirmPopupBinding.inflate(layoutInflater)
+            dialog.setContentView(bind.root)
+            bind.text.text = "Yakin Menghapus Jamaah " + intent.getStringExtra("nama").toString()
+            bind.yes.setOnClickListener {
+                deleteJamaah(to,intent.getStringExtra("id").toString(),intent.getStringExtra("userId").toString())
+            }
+            bind.no.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.show()
+        }
+
+
 
         //back
         binding.textView2.setOnClickListener {

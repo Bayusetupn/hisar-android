@@ -6,8 +6,11 @@ import com.example.hisar.data.Jamaah
 import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
 import com.example.hisar.data.ReqAgenEdit
+import com.example.hisar.data.ReqAgenPassword
 import com.example.hisar.data.ReqCreate
 import com.example.hisar.data.ReqJadwal
+import com.example.hisar.data.ReqJamaah
+import com.example.hisar.data.ReqJamaahDelete
 import com.example.hisar.data.RequestEditAdmin
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.RequestPassword
@@ -31,12 +34,19 @@ interface ApiServices {
     fun login(@Body data: LoginRequest): Call<LoginResponse>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @POST("convert")
+    fun Key(@Body id: RequestId): Call<Message>
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @GET("agen")
     fun agen(@Header("x-auth-token") key: String): Call<Data>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @HTTP(method = "DELETE", hasBody = true, path = "hapus")
     fun hapus(@Header("x-auth-token") key: String,@Body id : RequestId): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @HTTP(method = "DELETE", hasBody = true, path = "jamaah/delete")
+    fun hapusJamaah(@Header("x-auth-token") key: String,@Body data : ReqJamaahDelete): Call<Message>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @GET("ustad")
@@ -51,8 +61,16 @@ interface ApiServices {
     fun editAgen(@Header("x-auth-token") key: String,@Body data: ReqAgenEdit): Call<Message>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("agen/pass")
+    fun editAgenPass(@Header("x-auth-token") key: String,@Body data: ReqAgenPassword): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @GET("jamaah")
     fun jamaah(@Header("x-auth-token") key: String): Call<Jamaah>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @POST("jamaah/tambah")
+    fun jamaahTambah(@Header("x-auth-token") key: String,@Body data:ReqJamaah): Call<Message>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @GET("profile")

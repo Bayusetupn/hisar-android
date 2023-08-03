@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.hisar.admin.AdminActivity
+import com.example.hisar.agen.AgenActivity
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Data
 import com.example.hisar.databinding.ActivityMainBinding
@@ -51,11 +52,10 @@ class MainActivity : AppCompatActivity() {
                                 saveData(res.to.toString(),res.role)
                                 startActivity(Intent(applicationContext,AdminActivity::class.java))
                                 finish()
-                            }else{
-                                binding.error.visibility = View.VISIBLE
-                                binding.text.visibility = View.VISIBLE
-                                binding.load.visibility = View.GONE
-                                binding.error.text = "Kamu ${res.role}!"
+                            }else if(res.role == "agen" || res.role == "ustad"){
+                                saveData(res.to.toString(),res.role)
+                                startActivity(Intent(applicationContext,AgenActivity::class.java))
+                                finish()
                             }
                         }else{
                             val res = Gson().fromJson(response.errorBody()?.string(),LoginResponse::class.java)

@@ -1,5 +1,6 @@
 package com.example.hisar.admin
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -7,12 +8,10 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +34,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
+
 class ProfileAgen : AppCompatActivity() {
     private lateinit var binding:ActivityProfileAgenBinding
     private lateinit var daftar:RecyclerView
@@ -49,7 +49,6 @@ class ProfileAgen : AppCompatActivity() {
     private fun getRiwayat(key: String?,id: String?){
         ApiClient.apiService.riwayatLogin(key,RequestId(id))
             .enqueue(object: Callback<RiwayatLogin>{
-                @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(
                     call: Call<RiwayatLogin>,
                     response: Response<RiwayatLogin>
@@ -112,6 +111,7 @@ class ProfileAgen : AppCompatActivity() {
             })
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
         daftar = binding.daftar
@@ -190,6 +190,11 @@ class ProfileAgen : AppCompatActivity() {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             bind.img.setImageBitmap((binding.profilePic.drawable as BitmapDrawable).bitmap)
             dialog.show()
+        }
+
+        binding.whatsapp.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/62${intent.getStringExtra("telp")?.substring(1)}"))
+            startActivity(intent)
         }
 
         binding.delete.setOnClickListener {

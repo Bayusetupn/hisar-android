@@ -7,7 +7,7 @@
     android:background="@color/bg"
     android:clipToPadding="false"
     android:padding="@dimen/_20sdp"
-    tools:context=".admin.ProfileJamaah">
+    tools:context=".agen.ProfileJamaah_Agen">
 
 
     <ImageView
@@ -33,8 +33,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_7sdp"
         android:fillViewport="true"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -297,141 +297,6 @@
                         </LinearLayout>
                     </GridLayout>
 
-                    <LinearLayout
-                        android:id="@+id/whatsapp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/whatsapp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/sms"
-                            app:tint="@color/navy800" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Whatsapp"
-                            android:textColor="@color/navy800"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/edit_status_jamaah"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="@dimen/_8sdp"
-                            android:background="@drawable/button"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_10sdp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:src="@drawable/check"
-                                app:tint="@color/white" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/dmsans_med"
-                                android:text="Tandai Sudah Dp"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_11ssp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/jadwal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/button"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_10sdp">
-
-                            <ImageView
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_5sdp"
-                                android:src="@drawable/edit"
-                                app:tint="@color/white" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/dmsans_med"
-                                android:text="Atur Jadwal Berangkat"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_11ssp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:visibility="gone"
-                            android:id="@+id/date"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:id="@+id/btn_date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/text_input"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:paddingVertical="@dimen/_12sdp">
-
-                                <TextView
-                                    android:id="@+id/date_result"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="@dimen/_7sdp"
-                                    android:fontFamily="@font/dmsans_med"
-                                    android:text="Pilih Tanggal"
-                                    android:textColor="@color/navy800"
-                                    android:textSize="@dimen/_11ssp" />
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/calendar"
-                                    app:tint="@color/navy800" />
-
-                            </LinearLayout>
-
-                            <ImageView
-                                android:id="@+id/send"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/button"
-                                android:padding="@dimen/_10sdp"
-                                app:tint="@color/white"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:src="@drawable/send" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -679,33 +544,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
                         android:src="@drawable/user" />
-                    <LinearLayout
-                        android:id="@+id/unduh_ktp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/accent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/download"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Unduh"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -736,33 +575,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
                         android:src="@drawable/user" />
-                    <LinearLayout
-                        android:id="@+id/unduh_kk"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/accent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/download"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Unduh"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -793,33 +606,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
                         android:src="@drawable/user" />
-                    <LinearLayout
-                        android:id="@+id/unduh_paspor"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/accent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/download"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Unduh"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -851,33 +638,7 @@
                         android:layout_height="@dimen/_100sdp"
                         android:src="@drawable/user" />
 
-                    <LinearLayout
-                        android:id="@+id/unduh_pasfoto"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/accent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/download"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Unduh"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -909,33 +670,7 @@
                         android:layout_height="@dimen/_100sdp"
                         android:src="@drawable/user" />
 
-                    <LinearLayout
-                        android:id="@+id/unduh_akteN"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/accent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/download"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Unduh"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -967,33 +702,6 @@
                         android:layout_height="@dimen/_100sdp"
                         android:src="@drawable/user" />
 
-                    <LinearLayout
-                        android:id="@+id/unduh_akteK"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:background="@drawable/button"
-                        android:backgroundTint="@color/accent"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/download"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/dmsans_med"
-                            android:text="Unduh"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_11ssp" />
-                    </LinearLayout>
 
                 </LinearLayout>
 

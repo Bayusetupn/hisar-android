@@ -1,4 +1,4 @@
-package com.example.hisar.admin
+package com.example.hisar.agen
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -14,7 +14,7 @@ import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Message
 import com.example.hisar.data.ReqAgenEdit
 import com.example.hisar.data.ReqAgenPassword
-import com.example.hisar.databinding.ActivityEditAgenBinding
+import com.example.hisar.databinding.ActivityEditProfileAgenBinding
 import com.example.hisar.databinding.SuccesPopupBinding
 import com.example.hisar.databinding.WarningPopupBinding
 import com.google.gson.Gson
@@ -22,9 +22,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EditAgen : AppCompatActivity() {
+class EditProfileAgen : AppCompatActivity() {
 
-    private lateinit var binding: ActivityEditAgenBinding
+    private lateinit var binding: ActivityEditProfileAgenBinding
 
     private fun edittable(text: String?): Editable? {
         return Editable.Factory.getInstance().newEditable(text)
@@ -52,7 +52,7 @@ class EditAgen : AppCompatActivity() {
         dialog.setContentView(bind.root)
         bind.text.text = text
         bind.no.setOnClickListener {
-            val intent = Intent(applicationContext,AdminActivity::class.java)
+            val intent = Intent(applicationContext,AgenActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
@@ -128,7 +128,7 @@ class EditAgen : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityEditAgenBinding.inflate(layoutInflater)
+        binding = ActivityEditProfileAgenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val sharedPreferences = getSharedPreferences("AUTH",Context.MODE_PRIVATE)
