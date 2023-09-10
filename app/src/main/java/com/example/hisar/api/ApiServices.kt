@@ -1,5 +1,6 @@
 package com.example.hisar.api
 
+import com.example.hisar.data.Banner
 import com.example.hisar.data.Data
 import com.example.hisar.data.DocJamaah
 import com.example.hisar.data.Jamaah
@@ -11,6 +12,9 @@ import com.example.hisar.data.ReqCreate
 import com.example.hisar.data.ReqJadwal
 import com.example.hisar.data.ReqJamaah
 import com.example.hisar.data.ReqJamaahDelete
+import com.example.hisar.data.ReqJamaahEdit
+import com.example.hisar.data.ReqPerkab
+import com.example.hisar.data.ReqPerkabEdit
 import com.example.hisar.data.RequestEditAdmin
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.RequestPassword
@@ -73,6 +77,10 @@ interface ApiServices {
     fun jamaahTambah(@Header("x-auth-token") key: String,@Body data:ReqJamaah): Call<Message>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("jamaah/edit")
+    fun jamaahEdit(@Header("x-auth-token") key: String,@Body data:ReqJamaahEdit): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @GET("profile")
     fun profile(@Header("x-auth-token") key: String?): Call<Data>
 
@@ -101,6 +109,10 @@ interface ApiServices {
     fun perkab(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<PerkabJamaah>
 
     @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @PUT("jamaah/edit/perkab")
+    fun editPerkab(@Header("x-auth-token") key: String?,@Body data: ReqPerkabEdit ): Call<Message>
+
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
     @POST("riwayat")
     fun riwayatLogin(@Header("x-auth-token") key: String?,@Body id: RequestId ): Call<RiwayatLogin>
 
@@ -112,6 +124,9 @@ interface ApiServices {
     @PUT("admin/edit/pass")
     fun editPassAdmin(@Header("x-auth-token") key: String?,@Body req: RequestPassword ): Call<Message>
 
-
+    //promo
+    @Headers("x-api-key: 87d25403-c614-4988-aeed-ee0d09b55995")
+    @GET("promo")
+    fun getPromo(@Header("x-auth-token") key: String?):Call<Banner>
 
 }

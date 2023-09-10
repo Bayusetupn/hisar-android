@@ -2,10 +2,14 @@ package com.example.hisar
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.Manifest
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import com.example.hisar.admin.AdminActivity
 import com.example.hisar.agen.AgenActivity
@@ -23,11 +27,31 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
+    private val STORAGE_PERMISSION_CODE = 1
 
+    private fun isPermissionGranted(): Boolean {
+        val readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        val writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        return readPermission == PackageManager.PERMISSION_GRANTED && writePermission == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(this,
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            STORAGE_PERMISSION_CODE)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+       when(isPermissionGranted()){
+           false->{
+               requestPermission()
+           }
+           else -> {}
+       }
+
 
         binding.username.addTextChangedListener {
             binding.error.visibility = View.GONE

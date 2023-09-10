@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,14 +17,25 @@ import com.bumptech.glide.Glide
 import com.example.hisar.R
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Jamaah
+import com.example.hisar.data.Message
 import com.example.hisar.data.RequestId
 import com.example.hisar.databinding.ActivityAgenProfileBinding
 import com.example.hisar.databinding.ImagePopupBinding
-import com.example.hisar.login.DaftarJamaahAdapter_Agen
+import com.example.hisar.databinding.SuccesPopupBinding
 import com.example.hisar.login.DaftarJamaahAdapter_Self
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
+import java.io.FileOutputStream
 
 class AgenProfile : AppCompatActivity() {
     private lateinit var binding: ActivityAgenProfileBinding
@@ -72,6 +84,13 @@ class AgenProfile : AppCompatActivity() {
         binding.telp.text = intents("telp")
         getJamaah(to,intents("id").toString())
 
+        binding.more.setOnClickListener {
+            val intent = Intent(applicationContext,AgenActivity::class.java)
+                .putExtra("yes","yes")
+            startActivity(intent)
+            finish()
+        }
+
         binding.edit.setOnClickListener {
             val intent = Intent(applicationContext,EditProfileAgen::class.java)
                 .putExtra("id",intents("id"))
@@ -84,6 +103,73 @@ class AgenProfile : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.editProfile.setOnClickListener {
+            ImagePicker.with(this).apply {
+                this.cropSquare()
+                this.galleryMimeTypes(  //Exclude gif images
+                    mimeTypes = arrayOf(
+                        "image/png",
+                        "image/jpg",
+                        "image/jpeg"
+                    )
+                )
+                this.compress(1528)
+                this.start()
+            }
+        }
+
+    }
+
+    private fun deleteCache(name:String){
+        val dir = this@AgenProfile.cacheDir
+        val imgCache = File(dir,name)
+        imgCache.delete()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(resultCode){
+            RESULT_OK->{
+                val fileuri = data?.data!!
+                binding.saveProfile.visibility = View.VISIBLE
+                binding.profilePic.setImageURI(fileuri)
+                binding.saveProfile.setOnClickListener {
+                    val filedir = applicationContext.cacheDir
+                    val file = File(filedir,"profile.jpg")
+                    val inputStream = contentResolver.openInputStream(fileuri)
+                    val outputStream = FileOutputStream(file)
+                    inputStream?.copyTo(outputStream)
+                    inputStream?.close()
+                    val newFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+                    val imagePart = MultipartBody.Part.createFormData("image",file.name,newFile)
+
+                    val ids = intents("id").toString().toRequestBody("text/plain".toMediaTypeOrNull())
+                    val params = HashMap<String,RequestBody>()
+                    params["id"] = ids
+
+                    ApiClient.upload.profileUpload(params,imagePart)
+                        .enqueue(object: Callback<Message>{
+                            override fun onResponse(
+                                call: Call<Message>,
+                                response: Response<Message>
+                            ) {
+                                if (response.isSuccessful){
+                                    deleteCache("profile.jpg")
+                                    showSucces()
+
+                                }
+                            }
+
+                            override fun onFailure(call: Call<Message>, t: Throwable) {
+                                Toast.makeText(applicationContext,"Server Error!",Toast.LENGTH_SHORT).show()
+                            }
+
+                        })
+
+                }
+            }
+        }
     }
 
     private fun getJamaah(key:String,id:String){
@@ -110,5 +196,18 @@ class AgenProfile : AppCompatActivity() {
                 }
 
             })
+    }
+
+    private fun showSucces(){
+        val dialog = Dialog(this)
+        val bind = SuccesPopupBinding.inflate(layoutInflater)
+        bind.text.text = "Sukses Update Profile"
+        bind.no.setOnClickListener {
+            binding.saveProfile.visibility = View.GONE
+            dialog.dismiss()
+        }
+        dialog.setContentView(bind.root)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
     }
 }

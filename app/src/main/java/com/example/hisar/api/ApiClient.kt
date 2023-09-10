@@ -25,7 +25,15 @@ object ApiClient {
             .client(okhttp.build())
             .build()
 
+    private val uploadApi: Retrofit = Retrofit.Builder()
+        .baseUrl("https://api.hisar.my.id/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(okhttp.build())
+        .build()
+
+
         val apiService: ApiServices = retrofit.create(ApiServices::class.java)
         val alamat: Alamat = apiAlamat.create(Alamat::class.java)
+        val upload:Upload = uploadApi.create(Upload::class.java)
     }
 

@@ -259,6 +259,64 @@
                         </LinearLayout>
                     </GridLayout>
 
+                    <LinearLayout
+                        android:id="@+id/editProfile"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:gravity="center"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/image"
+                            app:tint="@color/white"
+                            android:layout_marginRight="@dimen/_7sdp"
+                            />
+
+                        <TextView
+                            android:paddingVertical="@dimen/_12sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Edit Foto Profile"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/dmsans_med"
+                            android:textSize="@dimen/_12ssp"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/saveProfile"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:gravity="center"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/check"
+                            app:tint="@color/white"
+                            android:layout_marginRight="@dimen/_7sdp"
+                            />
+
+                        <TextView
+                            android:paddingVertical="@dimen/_12sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Simpan Foto Profile"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/dmsans_med"
+                            android:textSize="@dimen/_12ssp"
+                            />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

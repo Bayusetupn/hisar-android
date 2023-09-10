@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.PromoAdminActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dmsans_bold"
+        android:text="Promo"
+        android:paddingLeft="@dimen/_20sdp"
+        android:paddingTop="@dimen/_20sdp"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/navy800"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/banner"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:riv_corner_radius="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp"
+        android:scaleType="fitXY"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:src="@drawable/image_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <View
+        android:layout_marginStart="@dimen/_20sdp"
+        android:id="@+id/view2"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_3sdp"
+        android:background="@drawable/bg"
+        android:backgroundTint="@color/navy700"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <LinearLayout
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:id="@+id/upload_promo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/upload"
+            app:tint="@color/white"
+            android:layout_marginRight="@dimen/_7sdp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload Promo"
+            android:fontFamily="@font/dmsans_med"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:id="@+id/send_promo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_promo">
+
+        <ImageView
+            android:id="@+id/cek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/check"
+            app:tint="@color/white"
+            android:visibility="visible"
+            android:layout_marginRight="@dimen/_7sdp"
+            />
+
+        <ProgressBar
+            android:id="@+id/load"
+            android:visibility="gone"
+            android:layout_width="@dimen/_20sdp"
+            android:indeterminateTint="@color/white"
+            android:layout_marginRight="@dimen/_7sdp"
+            android:layout_height="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Simpan Promo"
+            android:fontFamily="@font/dmsans_med"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/send_promo">
+
+        <LinearLayout
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar Promo"
+                android:fontFamily="@font/dmsans_bold"
+                android:textColor="@color/navy800"
+                android:textSize="@dimen/_17sdp"
+                />
+
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/daftar_promo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

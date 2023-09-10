@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_15sdp"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:background="@color/bg"
     tools:context=".agen.AgenDash">
 
     <ScrollView
+        app:layout_wrapBehaviorInParent="included"
         android:scrollbars="none"
+        android:paddingBottom="?android:actionBarSize"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:layout_width="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -24,6 +26,8 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:paddingTop="@dimen/_20sdp"
+                android:paddingStart="@dimen/_20sdp"
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,6 +39,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
+                android:layout_marginStart="@dimen/_20sdp"
                 android:id="@+id/cardView4"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_3sdp"
@@ -44,6 +49,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:id="@+id/profile_pic"
                 android:layout_width="@dimen/_27sdp"
                 android:layout_height="@dimen/_27sdp"
@@ -53,6 +60,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
 
             <LinearLayout
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:id="@+id/info"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_width="match_parent"
@@ -247,6 +255,76 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/promos"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/info">
+
+                <LinearLayout
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="Promo"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_17ssp" />
+                    <ImageView
+                        android:id="@+id/more_promo"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/more"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/promo_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_160sdp"
+                    android:text="Belum ada promo"
+                    android:fontFamily="@font/dmsans_med"
+                    android:textColor="@color/navy800"
+                    android:textSize="@dimen/_11ssp"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    />
+
+                   <FrameLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+
+                       <androidx.viewpager2.widget.ViewPager2
+                           android:id="@+id/promo"
+                           android:visibility="gone"
+                           android:paddingHorizontal="@dimen/_20sdp"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           />
+                       <me.relex.circleindicator.CircleIndicator3
+                           android:id="@+id/indicator"
+                           android:visibility="gone"
+                           android:layout_width="wrap_content"
+                           android:layout_gravity="center_horizontal|bottom"
+                           android:layout_marginBottom="@dimen/_15sdp"
+                           app:ci_height="@dimen/_5sdp"
+                           app:ci_width="@dimen/_5sdp"
+                           android:layout_height="@dimen/_12sdp"/>
+
+                   </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -255,7 +333,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info">
+                app:layout_constraintTop_toBottomOf="@+id/promos">
 
                 <LinearLayout
                     android:layout_width="match_parent"

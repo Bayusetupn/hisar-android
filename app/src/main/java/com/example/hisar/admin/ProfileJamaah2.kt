@@ -27,6 +27,7 @@ import com.example.hisar.data.PerkabJamaah
 import com.example.hisar.data.ReqJadwal
 import com.example.hisar.data.RequestId
 import com.example.hisar.data.ResRiwayatJamaah
+import com.example.hisar.databinding.ActivityProfileJamaah2Binding
 import com.example.hisar.databinding.ActivityProfileJamaahBinding
 import com.example.hisar.databinding.ConfirmPopupBinding
 import com.example.hisar.databinding.ImagePopupBinding
@@ -41,9 +42,9 @@ import java.util.Calendar
 import java.util.UUID
 
 @SuppressLint("SetTextI18n")
-class ProfileJamaah : AppCompatActivity() {
+class ProfileJamaah2 : AppCompatActivity() {
 
-    private lateinit var binding: ActivityProfileJamaahBinding
+    private lateinit var binding: ActivityProfileJamaah2Binding
     private lateinit var riwayat:RecyclerView
 
 
@@ -200,43 +201,12 @@ class ProfileJamaah : AppCompatActivity() {
                 override fun onResponse(call: Call<DocJamaah>, response: Response<DocJamaah>) {
                     if (response.isSuccessful){
                         val res = response.body()!!
-                        valid(res.data.ktp,binding.unduhKtp,"Ktp_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.ktp}")
-                        valid(res.data.kk,binding.unduhKk,"Kk_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.kk}")
-                        valid(res.data.akteK,binding.unduhAkteK,"Akte_Kelahiran_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.akteK}")
-                        valid(res.data.akteN,binding.unduhAkteN,"Akte_Nikah_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.akteN}")
-                        valid(res.data.passport,binding.unduhPaspor,"Paspor_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.passport}")
-                        valid(res.data.foto,binding.unduhPasfoto,"Pas_Foto_Jamaah_${intent.getStringExtra("nama")}","https://api.hisar.my.id/${res.data.foto}")
-                        Glide
-                            .with(applicationContext)
-                            .load("https://api.hisar.my.id/${res.data.ktp}")
-                            .placeholder(R.drawable.image_placeholder)
-                            .into(binding.fotoKtp)
-                        Glide
-                            .with(applicationContext)
-                            .load("https://api.hisar.my.id/${res.data.kk}")
-                            .placeholder(R.drawable.image_placeholder)
-                            .into(binding.fotoKk)
-                        Glide
-                            .with(applicationContext)
-                            .load("https://api.hisar.my.id/${res.data.akteK}")
-                            .placeholder(R.drawable.image_placeholder)
-                            .into(binding.akteLahir)
-                        Glide
-                            .with(applicationContext)
-                            .load("https://api.hisar.my.id/${res.data.akteN}")
-                            .placeholder(R.drawable.image_placeholder)
-                            .into(binding.akteNikah)
-                        Glide
-                            .with(applicationContext)
-                            .load("https://api.hisar.my.id/${res.data.foto}")
-                            .placeholder(R.drawable.image_placeholder)
-                            .into(binding.pasFoto)
-                        Glide
-                            .with(applicationContext)
-                            .load("https://api.hisar.my.id/${res.data.passport}")
-                            .placeholder(R.drawable.image_placeholder)
-                            .into(binding.fotoPaspor)
-
+                        binding.fotoKtp.isChecked = res.data.ktp?.isNotEmpty() == true
+                        binding.fotoKk.isChecked = res.data.kk?.isNotEmpty() == true
+                        binding.fotoPaspor.isChecked = res.data.passport?.isNotEmpty() == true
+                        binding.foto.isChecked = res.data.foto?.isNotEmpty() == true
+                        binding.akteLahir.isChecked = res.data.akteK?.isNotEmpty() == true
+                        binding.akteNikah.isChecked = res.data.akteN?.isNotEmpty() == true
                     }
                 }
 
@@ -249,7 +219,7 @@ class ProfileJamaah : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProfileJamaahBinding.inflate(layoutInflater)
+        binding = ActivityProfileJamaah2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val sharedPreferences = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
@@ -350,57 +320,6 @@ class ProfileJamaah : AppCompatActivity() {
         binding.whatsapp.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW,Uri.parse("https://wa.me/62${intent.getStringExtra("telp")?.substring(1)}"))
             startActivity(intent)
-        }
-
-        binding.fotoKtp.setOnClickListener {
-            val dialog = Dialog(this)
-            val bind = ImagePopupBinding.inflate(layoutInflater)
-            dialog.setContentView(bind.root)
-            bind.img.setImageDrawable(binding.fotoKtp.drawable)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
-        }
-
-        binding.fotoKk.setOnClickListener {
-            val dialog = Dialog(this)
-            val bind = ImagePopupBinding.inflate(layoutInflater)
-            dialog.setContentView(bind.root)
-            bind.img.setImageDrawable(binding.fotoKk.drawable)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
-        }
-
-        binding.akteLahir.setOnClickListener {
-            val dialog = Dialog(this)
-            val bind = ImagePopupBinding.inflate(layoutInflater)
-            dialog.setContentView(bind.root)
-            bind.img.setImageDrawable(binding.akteLahir.drawable)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
-        }
-        binding.akteNikah.setOnClickListener {
-            val dialog = Dialog(this)
-            val bind = ImagePopupBinding.inflate(layoutInflater)
-            dialog.setContentView(bind.root)
-            bind.img.setImageDrawable(binding.akteNikah.drawable)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
-        }
-        binding.pasFoto.setOnClickListener {
-            val dialog = Dialog(this)
-            val bind = ImagePopupBinding.inflate(layoutInflater)
-            dialog.setContentView(bind.root)
-            bind.img.setImageDrawable(binding.pasFoto.drawable)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
-        }
-        binding.fotoPaspor.setOnClickListener {
-            val dialog = Dialog(this)
-            val bind = ImagePopupBinding.inflate(layoutInflater)
-            dialog.setContentView(bind.root)
-            bind.img.setImageDrawable(binding.fotoPaspor.drawable)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
         }
 
         //back

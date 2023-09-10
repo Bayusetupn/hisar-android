@@ -8,5 +8,7 @@
     <color name="navy700">#1B254B</color>
     <color name="navy800">#111C44</color>
     <color name="whatsapp">#25D366</color>
+    <color name="ucrop_color_statusbar">@color/black</color>
+    <color name="ucrop_color_widget_active">@color/navy800</color>
 
 </resources>

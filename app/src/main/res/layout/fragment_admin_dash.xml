@@ -12,6 +12,10 @@
     >
 
     <ScrollView
+
+        android:paddingBottom="?android:actionBarSize"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_wrapBehaviorInParent="included"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:layout_width="match_parent"
@@ -142,7 +146,7 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_7sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:elevation="@dimen/_10sdp"
@@ -258,16 +262,28 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <Button
+                    android:id="@+id/promo_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="Promo"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:clipChildren="false"
-
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView">
+                    app:layout_constraintTop_toBottomOf="@+id/promo_button">
 
                     <LinearLayout
                         android:layout_width="match_parent"

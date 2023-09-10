@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".agen.EditPerlengkapanJamaah"
     android:padding="@dimen/_20sdp"
+    android:background="@color/bg"
     >
 
     <LinearLayout
@@ -228,7 +229,7 @@
                         android:textSize="@dimen/_12ssp" />
 
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_koper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -240,7 +241,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_batik"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -252,7 +253,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_ihram"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -264,7 +265,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_mukena"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -276,7 +277,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_syal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -288,7 +289,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_panduan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -300,7 +301,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_doa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -312,7 +313,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_sholawat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -324,7 +325,7 @@
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_12ssp" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/new_peta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

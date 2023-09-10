@@ -5,15 +5,14 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.hisar.DaftarRiwayatAdapter
 import com.example.hisar.R
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.DocJamaah
@@ -21,7 +20,6 @@ import com.example.hisar.data.Message
 import com.example.hisar.data.PerkabJamaah
 import com.example.hisar.data.ReqJamaahDelete
 import com.example.hisar.data.RequestId
-import com.example.hisar.data.ResRiwayatJamaah
 import com.example.hisar.databinding.ActivityProfileJamaahSelfBinding
 import com.example.hisar.databinding.ConfirmPopupBinding
 import com.example.hisar.databinding.ImagePopupBinding
@@ -34,28 +32,7 @@ class ProfileJamaah_Self : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileJamaahSelfBinding
     private lateinit var riwayat:RecyclerView
-
-
-    private fun getRiwayat(key: String,id: String){
-        ApiClient.apiService.jamaahJadwal(key,RequestId(id))
-            .enqueue(object: Callback<ResRiwayatJamaah>{
-                override fun onResponse(
-                    call: Call<ResRiwayatJamaah>,
-                    response: Response<ResRiwayatJamaah>
-                ) {
-                    if (response.isSuccessful){
-                        val res = response.body()!!
-                        val sort: ArrayList<ResRiwayatJamaah.Riwayat> = ArrayList(res.data.sortedByDescending { it.id})
-                        riwayat.adapter = DaftarRiwayatAdapter(sort)
-                    }
-                }
-
-                override fun onFailure(call: Call<ResRiwayatJamaah>, t: Throwable) {
-                    Toast.makeText(applicationContext,"Server Error!",Toast.LENGTH_SHORT).show()
-                }
-
-            })
-    }
+    private var img: ArrayList<String> = arrayListOf("1","2","3","4","5")
 
     private fun getPerkab(key: String?,id: String){
         ApiClient.apiService.perkab(key, RequestId(id))
@@ -93,6 +70,7 @@ class ProfileJamaah_Self : AppCompatActivity() {
                 override fun onResponse(call: Call<DocJamaah>, response: Response<DocJamaah>) {
                     if (response.isSuccessful){
                         val res = response.body()!!
+                        img[0] = "https://api.hisar.my.id/${res.data.ktp}"
                         Glide
                             .with(applicationContext)
                             .load("https://api.hisar.my.id/${res.data.ktp}")
@@ -105,22 +83,22 @@ class ProfileJamaah_Self : AppCompatActivity() {
                             .into(binding.fotoKk)
                         Glide
                             .with(applicationContext)
-                            .load("https://api.hisar.my.id${res.data.akteK}")
+                            .load("https://api.hisar.my.id/${res.data.akteK}")
                             .placeholder(R.drawable.image_placeholder)
                             .into(binding.akteLahir)
                         Glide
                             .with(applicationContext)
-                            .load("https://api.hisar.my.id${res.data.akteN}")
+                            .load("https://api.hisar.my.id/${res.data.akteN}")
                             .placeholder(R.drawable.image_placeholder)
                             .into(binding.akteNikah)
                         Glide
                             .with(applicationContext)
-                            .load("https://api.hisar.my.id${res.data.foto}")
+                            .load("https://api.hisar.my.id/${res.data.foto}")
                             .placeholder(R.drawable.image_placeholder)
                             .into(binding.pasFoto)
                         Glide
                             .with(applicationContext)
-                            .load("https://api.hisar.my.id${res.data.passport}")
+                            .load("https://api.hisar.my.id/${res.data.passport}")
                             .placeholder(R.drawable.image_placeholder)
                             .into(binding.fotoPaspor)
 
@@ -153,6 +131,16 @@ class ProfileJamaah_Self : AppCompatActivity() {
             })
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val sharedPreferences = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        val to:String = sharedPreferences.getString("KEY",null).toString()
+
+        getDoc(to,intent.getStringExtra("id").toString())
+        getPerkab(to,intent.getStringExtra("id").toString())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileJamaahSelfBinding.inflate(layoutInflater)
@@ -173,11 +161,15 @@ class ProfileJamaah_Self : AppCompatActivity() {
             }
         }
 
-        getRiwayat(to,intent.getStringExtra("id").toString())
 
         intent.getStringExtra("id")?.let { getPerkab(to, it) }
         intent.getStringExtra("id")?.let { getDoc(to, it)}
 
+        binding.editDokumen.setOnClickListener {
+            val intent = Intent(applicationContext,EditDokumenJamaah::class.java)
+                .putExtra("id",intent.getStringExtra("id"))
+            startActivity(intent)
+        }
 
         //profile
         binding.nama.text = intent.getStringExtra("nama")
@@ -191,6 +183,18 @@ class ProfileJamaah_Self : AppCompatActivity() {
         binding.daftarkan.text = intent.getStringExtra("didaftarkan")
         binding.keterangan.text = if (intent.getBooleanExtra("keterangan",false)) "Lunas" else "Belum Lunas"
 
+        binding.edit.setOnClickListener {
+            val intent = Intent(applicationContext,EditJamaah::class.java)
+                .putExtra("id",intent.getStringExtra("id"))
+                .putExtra("ktp",intent.getStringExtra("ktp"))
+                .putExtra("nama",intent.getStringExtra("nama"))
+                .putExtra("telp",intent.getStringExtra("telp"))
+                .putExtra("kelamin",if (intent.getStringExtra("kelamin") == "Laki-Laki") 0 else 1)
+                .putExtra("alamat",intent.getStringExtra("alamat"))
+                .putExtra("paket",intent.getStringExtra("paket"))
+            startActivity(intent)
+        }
+
         binding.editPerkab.setOnClickListener {
             val intent = Intent(applicationContext,EditPerlengkapanJamaah::class.java)
                 .putExtra("koper",binding.koper.isChecked)
@@ -202,8 +206,10 @@ class ProfileJamaah_Self : AppCompatActivity() {
                 .putExtra("doa",binding.doa.isChecked)
                 .putExtra("sholawat",binding.sholawat.isChecked)
                 .putExtra("peta",binding.peta.isChecked)
+                .putExtra("id",intent.getStringExtra("id"))
             startActivity(intent)
         }
+
 
         binding.fotoKtp.setOnClickListener {
             val dialog = Dialog(this)
@@ -270,8 +276,6 @@ class ProfileJamaah_Self : AppCompatActivity() {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.show()
         }
-
-
 
         //back
         binding.textView2.setOnClickListener {

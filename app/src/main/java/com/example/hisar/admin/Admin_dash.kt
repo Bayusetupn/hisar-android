@@ -105,6 +105,7 @@ class Admin_dash : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -153,6 +154,13 @@ class Admin_dash : Fragment() {
             intent.putExtra("totalJamaah",binding.totalJamaah.text)
             startActivity(intent)
         }
+
+        binding.promoButton.setOnClickListener {
+            val intent = Intent(context,PromoAdminActivity::class.java)
+                .putExtra("key",arguments?.getString("auth_key"))
+            startActivity(intent)
+        }
+
         DataAgen()
         DataUstad()
         DataJamaah()

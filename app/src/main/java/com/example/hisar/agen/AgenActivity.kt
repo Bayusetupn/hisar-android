@@ -30,8 +30,13 @@ class AgenActivity : AppCompatActivity() {
 
         getID(to)
 
-        frag(AgenDash.setData(to,role,id))
-        binding.adminNav.selectedItemId = R.id.agen_dash
+        if (intent.getStringExtra("yes") == "yes"){
+            frag(JamaahAnda.setData(to,role,id))
+            binding.adminNav.selectedItemId = R.id.agen_jamaah
+        }else{
+            frag(AgenDash.setData(to,role,id))
+            binding.adminNav.selectedItemId = R.id.agen_dash
+        }
 
         binding.adminNav.setOnItemSelectedListener {
             when(it.itemId){

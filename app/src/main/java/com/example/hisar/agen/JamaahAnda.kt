@@ -16,12 +16,12 @@ import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Jamaah
 import com.example.hisar.data.RequestId
 import com.example.hisar.databinding.FragmentJamaahAndaBinding
-import com.example.hisar.login.DaftarJamaahAdapter_Agen
 import com.example.hisar.login.DaftarJamaahAdapter_Self
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
+
 @SuppressLint("SetTextI18n")
 class JamaahAnda : Fragment() {
     private var _binding:FragmentJamaahAndaBinding?=null
@@ -98,6 +98,11 @@ class JamaahAnda : Fragment() {
 
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getJamaah(arguments?.getString("auth_key").toString(),arguments?.getString("id").toString())
     }
 
     private fun getJamaah(key:String,id: String){

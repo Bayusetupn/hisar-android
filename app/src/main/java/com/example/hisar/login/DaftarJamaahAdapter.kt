@@ -4,13 +4,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.hisar.admin.ProfileJamaah
-import com.example.hisar.data.Data
+import com.example.hisar.admin.ProfileJamaah2
 import com.example.hisar.data.Jamaah
 import com.example.hisar.databinding.ListDaftarAgenBinding
 
-class DaftarJamaahAdapter(private var data: ArrayList<Jamaah.DataItem>,val legth:Int):
+class DaftarJamaahAdapter(private var data: ArrayList<Jamaah.DataItem>, private val legth:Int):
 RecyclerView.Adapter<DaftarJamaahAdapter.ViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,7 +27,7 @@ RecyclerView.Adapter<DaftarJamaahAdapter.ViewHolder>(){
         val item = data[position]
         holder.bind(item)
         holder.open.setOnClickListener {
-            val intent = Intent(holder.itemView.context,ProfileJamaah::class.java)
+            val intent = Intent(holder.itemView.context, ProfileJamaah2::class.java)
                 .putExtra("id",item.id)
                 .putExtra("nama",item.nama)
                 .putExtra("alamat",item.alamat)
@@ -46,14 +44,14 @@ RecyclerView.Adapter<DaftarJamaahAdapter.ViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        if (data.size < 1){
-            return 0
+        return if (data.size < 1){
+            0
         }else if(data.size == 1){
-            return 1
+            1
         }else if(data.size == 2){
-            return 2
+            2
         }else{
-            return legth
+            legth
         }
     }
 

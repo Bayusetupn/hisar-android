@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_20sdp"
+    android:background="@color/bg"
     tools:context=".agen.EditDokumenJamaah">
 
     <LinearLayout
@@ -34,6 +35,7 @@
     </LinearLayout>
 
     <ScrollView
+        android:layout_marginTop="@dimen/_10sdp"
         android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -68,14 +70,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dmsans_bold"
-                        android:text="Dokumen Sekarang"
+                        android:text="Syarat Dokumen"
                         android:textColor="@color/navy800"
                         android:textSize="@dimen/_15ssp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -96,11 +98,21 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:text="* Harus jelas, tidak tertutupi cahaya, tidak miring, tidak gelap, semua tulisan tidak
+terpotong"
+                        android:layout_marginVertical="@dimen/_10sdp"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_13ssp" />
+
                     <ImageView
                         android:id="@+id/foto_ktp"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/contoh_ktp" />
 
 
                     <LinearLayout
@@ -131,7 +143,7 @@
                         android:id="@+id/foto_kk"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/contoh_kk" />
 
 
                     <LinearLayout
@@ -158,11 +170,21 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_reg"
+                        android:text="* Harus jelas, tidak tertutupi cahaya, tidak miring, tidak gelap, semua tulisan tidak
+terpotong"
+                        android:layout_marginVertical="@dimen/_10sdp"
+                        android:textColor="@color/navy800"
+                        android:textSize="@dimen/_13ssp" />
+
                     <ImageView
                         android:id="@+id/foto_paspor"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/contoh_paspor" />
 
 
                     <LinearLayout
@@ -193,7 +215,7 @@
                         android:id="@+id/pas_foto"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/contoh_pas_foto" />
 
 
 
@@ -223,9 +245,9 @@
 
                     <ImageView
                         android:id="@+id/akte_nikah"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/contoh_akte_nikah" />
 
 
 
@@ -257,7 +279,7 @@
                         android:id="@+id/akte_lahir"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/contoh_akte_lahir" />
 
 
                 </LinearLayout>
@@ -317,7 +339,7 @@
                         android:id="@+id/new_foto_ktp"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/image_placeholder" />
 
 
                         <LinearLayout
@@ -394,7 +416,7 @@
                         android:id="@+id/new_foto_kk"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/image_placeholder" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -469,7 +491,7 @@
                         android:id="@+id/new_foto_paspor"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/image_placeholder" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -544,7 +566,7 @@
                         android:id="@+id/new_pas_foto"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/image_placeholder" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -619,7 +641,7 @@
                         android:id="@+id/new_akte_nikah"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/image_placeholder" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -694,7 +716,7 @@
                         android:id="@+id/new_akte_lahir"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_100sdp"
-                        android:src="@drawable/user" />
+                        android:src="@drawable/image_placeholder" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -742,6 +764,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/save"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package com.example.hisar.agen
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hisar.R
+import com.example.hisar.admin.DaftarJamaah_Agen
 import com.example.hisar.api.ApiClient
 import com.example.hisar.data.Jamaah
 import com.example.hisar.data.RequestId
@@ -61,6 +63,7 @@ class AgenProfile_Agen : AppCompatActivity() {
             .placeholder(R.drawable.user)
             .into(binding.profilePic)
 
+
         binding.nama.text = intents("nama")
         binding.role.text = intents("role")
         binding.alamat.text = intents("alamat")
@@ -69,6 +72,14 @@ class AgenProfile_Agen : AppCompatActivity() {
         binding.bergabung.text = intents("bergabung")
         binding.totalJamaah.text = intent.getIntExtra("total",0).toString()
         binding.telp.text = intents("telp")
+
+        binding.more.setOnClickListener {
+            val intent = Intent(applicationContext,DaftarJamaah_Agen::class.java)
+                .putExtra("id",intents("id"))
+                .putExtra("key",to)
+            startActivity(intent)
+        }
+
         getJamaah(to,intents("id").toString())
     }
 
